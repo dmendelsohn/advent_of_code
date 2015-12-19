@@ -105,9 +105,18 @@ def part2Answer(f):
 	parsed = parse(tokens)
 	return getNumReductions(parsed) - 1
 
+def part2AnswerSimple(f):
+	start = [line.strip() for line in f][-1]
+	numTokens = [letter.isupper() for letter in start].count(True)
+	numParenPairs = start.count('Rn')
+	numCommas = start.count('Y')
+	return numTokens - 2*numParenPairs - 2*numCommas - 1
+
 if __name__ == "__main__":
 	f = open('input.txt', 'rt')
 	print("Part 1: %d" % (part1Answer(f),))
 	f.seek(0)
 	print("Part 2: %d" % (part2Answer(f),))
+	f.seek(0)
+	print("Part 2 (Simple): %d" %(part2AnswerSimple(f),))
 
