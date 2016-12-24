@@ -1,0 +1,876 @@
+(171, ('bot', 4), ('bot', 84))
+(1, ('bot', 117), ('bot', 81))
+(82, ('bot', 209), ('bot', 103))
+(128, ('bot', 56), ('bot', 91))
+(8, 23)
+(7, ('bot', 148), ('bot', 22))
+(179, ('bot', 91), ('bot', 77))
+(158, ('bot', 125), ('bot', 143))
+(190, ('bot', 26), ('bot', 100))
+(32, ('output', 12), ('bot', 6))
+(115, ('bot', 126), ('bot', 38))
+(101, ('bot', 202), ('bot', 66))
+(143, ('bot', 169), ('bot', 76))
+(31, ('bot', 109), ('bot', 95))
+(103, ('bot', 9), ('bot', 171))
+(180, ('bot', 137), ('bot', 93))
+(73, ('bot', 21), ('bot', 19))
+(91, ('bot', 18), ('bot', 58))
+(49, ('bot', 85), ('bot', 188))
+(41, ('bot', 69), ('bot', 203))
+(10, ('bot', 31), ('bot', 94))
+(29, ('output', 9), ('bot', 164))
+(44, ('bot', 194), ('bot', 180))
+(157, ('bot', 67), ('bot', 14))
+(104, ('bot', 114), ('bot', 149))
+(183, ('bot', 201), ('bot', 151))
+(138, ('output', 19), ('bot', 37))
+(21, ('bot', 98), ('bot', 205))
+(9, ('bot', 36), ('bot', 4))
+(136, ('bot', 87), ('bot', 196))
+(99, ('output', 20), ('bot', 96))
+(142, ('bot', 27), ('bot', 116))
+(42, ('bot', 118), ('bot', 104))
+(108, ('bot', 64), ('bot', 42))
+(157, 7)
+(159, ('bot', 78), ('bot', 192))
+(81, ('bot', 124), ('bot', 3))
+(148, ('bot', 96), ('bot', 146))
+(107, ('bot', 49), ('bot', 48))
+(38, ('bot', 177), ('bot', 200))
+(106, 43)
+(28, ('bot', 70), ('bot', 79))
+(172, ('bot', 106), ('bot', 190))
+(162, ('bot', 158), ('bot', 59))
+(208, ('output', 4), ('output', 13))
+(21, 47)
+(124, ('bot', 79), ('bot', 83))
+(206, ('bot', 196), ('bot', 55))
+(17, ('bot', 65), ('bot', 187))
+(144, ('bot', 46), ('bot', 107))
+(154, ('bot', 195), ('bot', 78))
+(106, ('bot', 72), ('bot', 26))
+(186, ('bot', 14), ('bot', 209))
+(10, 67)
+(187, ('bot', 123), ('bot', 193))
+(5, ('bot', 136), ('bot', 206))
+(166, ('bot', 61), ('bot', 85))
+(32, 37)
+(198, ('bot', 76), ('bot', 71))
+(97, ('output', 18), ('bot', 129))
+(139, ('bot', 108), ('bot', 88))
+(192, ('bot', 131), ('bot', 89))
+(174, ('bot', 80), ('bot', 127))
+(92, ('bot', 11), ('bot', 7))
+(94, ('bot', 95), ('bot', 183))
+(98, 5)
+(72, ('bot', 207), ('bot', 43))
+(12, ('bot', 68), ('bot', 195))
+(156, ('bot', 89), ('bot', 1))
+(188, ('bot', 197), ('bot', 64))
+(3, ('bot', 83), ('bot', 105))
+(77, ('bot', 58), ('bot', 41))
+(11, ('bot', 99), ('bot', 148))
+(55, ('bot', 45), ('bot', 44))
+(66, ('bot', 5), ('bot', 141))
+(23, ('bot', 48), ('bot', 139))
+(18, ('bot', 39), ('bot', 174))
+(40, ('bot', 190), ('bot', 39))
+(90, ('bot', 179), ('bot', 36))
+(196, ('bot', 92), ('bot', 45))
+(79, ('bot', 162), ('bot', 147))
+(172, 2)
+(135, ('bot', 133), ('bot', 168))
+(117, ('bot', 28), ('bot', 124))
+(118, ('bot', 13), ('bot', 114))
+(26, ('bot', 43), ('bot', 12))
+(185, ('bot', 32), ('bot', 34))
+(207, 61)
+(193, ('bot', 101), ('bot', 132))
+(16, ('bot', 186), ('bot', 82))
+(93, ('bot', 144), ('bot', 60))
+(116, ('bot', 155), ('bot', 57))
+(39, ('bot', 100), ('bot', 80))
+(131, ('bot', 173), ('bot', 74))
+(133, ('output', 11), ('bot', 20))
+(137, ('bot', 33), ('bot', 144))
+(52, 11)
+(105, ('bot', 62), ('bot', 122))
+(126, ('bot', 25), ('bot', 177))
+(78, ('bot', 75), ('bot', 131))
+(132, ('bot', 66), ('bot', 167))
+(202, ('bot', 181), ('bot', 5))
+(27, ('bot', 163), ('bot', 116))
+(173, ('bot', 193), ('bot', 63))
+(112, 41)
+(13, ('bot', 182), ('bot', 50))
+(59, ('bot', 143), ('bot', 198))
+(123, ('bot', 200), ('bot', 101))
+(182, ('output', 2), ('bot', 97))
+(112, ('bot', 8), ('bot', 15))
+(86, ('bot', 164), ('bot', 166))
+(201, ('bot', 82), ('bot', 151))
+(62, ('bot', 198), ('bot', 122))
+(65, ('bot', 38), ('bot', 123))
+(165, ('bot', 121), ('bot', 110))
+(197, ('bot', 37), ('bot', 111))
+(69, ('bot', 127), ('bot', 0))
+(57, ('bot', 81), ('bot', 3))
+(168, ('bot', 20), ('bot', 170))
+(31, 31)
+(6, ('output', 7), ('bot', 133))
+(72, 3)
+(67, ('bot', 204), ('bot', 161))
+(35, ('bot', 30), ('bot', 11))
+(14, ('bot', 161), ('bot', 90))
+(175, ('bot', 157), ('bot', 186))
+(96, ('output', 1), ('bot', 29))
+(170, ('bot', 51), ('bot', 176))
+(68, ('bot', 191), ('bot', 17))
+(209, ('bot', 90), ('bot', 9))
+(150, ('bot', 168), ('bot', 119))
+(203, ('bot', 0), ('bot', 27))
+(2, ('output', 3), ('bot', 208))
+(50, ('bot', 97), ('bot', 24))
+(161, ('bot', 128), ('bot', 179))
+(167, ('bot', 141), ('bot', 158))
+(112, 73)
+Robot 112 prop
+Robot 112 pass low (41) to bot 8
+Robot 8 prop
+Robot 112 pass high (73) to bot 15
+(163, ('bot', 156), ('bot', 155))
+(4, ('bot', 178), ('bot', 84))
+(147, ('bot', 59), ('bot', 62))
+(25, ('bot', 135), ('bot', 150))
+(121, ('bot', 160), ('bot', 110))
+(169, ('bot', 44), ('bot', 47))
+(75, ('bot', 187), ('bot', 173))
+(120, ('bot', 176), ('bot', 87))
+(177, ('bot', 150), ('bot', 102))
+(37, ('output', 16), ('bot', 134))
+(149, ('bot', 24), ('bot', 130))
+(34, ('bot', 6), ('bot', 135))
+(109, 71)
+(43, ('bot', 199), ('bot', 68))
+(145, ('bot', 139), ('bot', 88))
+(84, ('bot', 140), ('bot', 142))
+(20, ('output', 8), ('bot', 51))
+(95, ('bot', 16), ('bot', 201))
+(61, ('output', 5), ('bot', 138))
+(83, ('bot', 147), ('bot', 105))
+(46, ('bot', 166), ('bot', 49))
+(153, ('bot', 93), ('bot', 160))
+(71, ('bot', 152), ('bot', 165))
+(48, ('bot', 188), ('bot', 108))
+(98, ('bot', 185), ('bot', 184))
+(70, ('bot', 167), ('bot', 162))
+(195, ('bot', 17), ('bot', 75))
+(205, ('bot', 184), ('bot', 126))
+(24, ('bot', 129), ('bot', 130))
+(60, ('bot', 107), ('bot', 23))
+(51, ('output', 6), ('bot', 189))
+(45, ('bot', 7), ('bot', 194))
+(164, ('output', 0), ('bot', 61))
+(8, ('bot', 10), ('bot', 15))
+Robot 8 prop
+Robot 8 pass low (23) to bot 10
+Robot 10 prop
+Robot 10 pass low (23) to bot 31
+Robot 31 prop
+Robot 31 pass low (23) to bot 109
+Robot 109 prop
+Robot 31 pass high (31) to bot 95
+Robot 10 pass high (67) to bot 94
+Robot 8 prop
+Robot 8 pass high (41) to bot 15
+Robot 15 prop
+(67, 19)
+(181, ('bot', 120), ('bot', 136))
+(204, 13)
+(114, ('bot', 50), ('bot', 149))
+(113, ('bot', 52), ('bot', 56))
+(30, ('output', 14), ('bot', 99))
+(63, ('bot', 132), ('bot', 70))
+(80, ('bot', 154), ('bot', 159))
+(53, ('bot', 23), ('bot', 145))
+(125, ('bot', 55), ('bot', 169))
+(56, ('bot', 40), ('bot', 18))
+(54, ('bot', 192), ('bot', 156))
+(155, ('bot', 1), ('bot', 57))
+(102, ('bot', 119), ('bot', 181))
+(151, ('bot', 103), ('bot', 171))
+(200, ('bot', 102), ('bot', 202))
+(0, ('bot', 54), ('bot', 163))
+(191, ('bot', 115), ('bot', 65))
+(119, ('bot', 170), ('bot', 120))
+(207, ('bot', 73), ('bot', 199))
+(184, ('bot', 34), ('bot', 25))
+(73, 59)
+(130, ('bot', 2), ('bot', 208))
+(111, ('bot', 134), ('bot', 13))
+(15, ('bot', 94), ('bot', 183))
+Robot 15 prop
+Robot 15 pass low (41) to bot 94
+Robot 94 prop
+Robot 94 pass low (41) to bot 95
+Robot 95 prop
+Robot 95 pass low (31) to bot 16
+Robot 95 pass high (41) to bot 201
+Robot 94 pass high (67) to bot 183
+Robot 15 prop
+Robot 15 pass high (73) to bot 183
+Robot 183 prop
+Robot 183 pass low (67) to bot 201
+Robot 201 prop
+Robot 201 pass low (41) to bot 82
+Robot 201 pass high (67) to bot 151
+Robot 183 pass high (73) to bot 151
+Robot 151 prop
+Robot 151 pass low (67) to bot 103
+Robot 151 pass high (73) to bot 171
+(146, ('bot', 29), ('bot', 86))
+(58, ('bot', 174), ('bot', 69))
+(189, ('output', 15), ('bot', 30))
+(33, ('bot', 86), ('bot', 46))
+(100, ('bot', 12), ('bot', 154))
+(160, ('bot', 60), ('bot', 53))
+(129, ('output', 17), ('bot', 2))
+(87, ('bot', 35), ('bot', 92))
+(64, ('bot', 111), ('bot', 118))
+(134, ('output', 10), ('bot', 182))
+(122, ('bot', 71), ('bot', 165))
+(178, ('bot', 41), ('bot', 140))
+(175, 29)
+(19, ('bot', 205), ('bot', 115))
+(47, ('bot', 180), ('bot', 153))
+(113, 17)
+(176, ('bot', 189), ('bot', 35))
+(88, ('bot', 42), ('bot', 104))
+(199, ('bot', 19), ('bot', 191))
+(185, 53)
+(22, ('bot', 146), ('bot', 33))
+(52, ('bot', 172), ('bot', 40))
+(141, ('bot', 206), ('bot', 125))
+(152, ('bot', 153), ('bot', 121))
+(140, ('bot', 203), ('bot', 142))
+(85, ('bot', 138), ('bot', 197))
+(89, ('bot', 74), ('bot', 117))
+(109, ('bot', 175), ('bot', 16))
+Robot 109 prop
+Robot 109 pass low (23) to bot 175
+Robot 175 prop
+Robot 175 pass low (23) to bot 157
+Robot 157 prop
+Robot 157 pass low (7) to bot 67
+Robot 67 prop
+Robot 67 pass low (7) to bot 204
+Robot 204 prop
+Robot 67 pass high (19) to bot 161
+Robot 157 pass high (23) to bot 14
+Robot 175 pass high (29) to bot 186
+Robot 109 prop
+Robot 109 pass high (71) to bot 16
+Robot 16 prop
+Robot 16 pass low (31) to bot 186
+Robot 186 prop
+Robot 186 pass low (29) to bot 14
+Robot 14 prop
+Robot 14 pass low (23) to bot 161
+Robot 161 prop
+Robot 161 pass low (19) to bot 128
+Robot 161 pass high (23) to bot 179
+Robot 14 pass high (29) to bot 90
+Robot 186 pass high (31) to bot 209
+Robot 16 pass high (71) to bot 82
+Robot 82 prop
+Robot 82 pass low (41) to bot 209
+Robot 209 prop
+Robot 209 pass low (31) to bot 90
+Robot 90 prop
+Robot 90 pass low (29) to bot 179
+Robot 179 prop
+Robot 179 pass low (23) to bot 91
+Robot 179 pass high (29) to bot 77
+Robot 90 pass high (31) to bot 36
+Robot 209 pass high (41) to bot 9
+Robot 82 pass high (71) to bot 103
+Robot 103 prop
+Robot 103 pass low (67) to bot 9
+Robot 9 prop
+Robot 9 pass low (41) to bot 36
+Robot 36 prop
+Robot 9 pass high (67) to bot 4
+Robot 103 pass high (71) to bot 171
+Robot 171 prop
+Robot 171 pass low (71) to bot 4
+Robot 4 prop
+Robot 4 pass low (67) to bot 178
+Robot 4 pass high (71) to bot 84
+Robot 171 pass high (73) to bot 84
+Robot 84 prop
+Robot 84 pass low (71) to bot 140
+Robot 84 pass high (73) to bot 142
+(36, ('bot', 77), ('bot', 178))
+Robot 36 prop
+Robot 36 pass low (31) to bot 77
+Robot 77 prop
+Robot 77 pass low (29) to bot 58
+Robot 77 pass high (31) to bot 41
+Robot 36 prop
+Robot 36 pass high (41) to bot 178
+Robot 178 prop
+Robot 178 pass low (41) to bot 41
+Robot 41 prop
+Robot 41 pass low (31) to bot 69
+Robot 41 pass high (41) to bot 203
+Robot 178 pass high (67) to bot 140
+Robot 140 prop
+Robot 140 pass low (67) to bot 203
+Robot 203 prop
+Robot 203 pass low (41) to bot 0
+Robot 203 pass high (67) to bot 27
+Robot 140 pass high (71) to bot 142
+Robot 142 prop
+Robot 142 pass low (71) to bot 27
+Robot 27 prop
+Robot 27 pass low (67) to bot 163
+Robot 27 pass high (71) to bot 116
+Robot 142 pass high (73) to bot 116
+Robot 116 prop
+Robot 116 pass low (71) to bot 155
+Robot 116 pass high (73) to bot 57
+(76, ('bot', 47), ('bot', 152))
+(194, ('bot', 22), ('bot', 137))
+(110, ('bot', 53), ('bot', 145))
+(74, ('bot', 63), ('bot', 28))
+(204, ('bot', 113), ('bot', 128))
+Robot 204 prop
+Robot 204 pass low (7) to bot 113
+Robot 113 prop
+Robot 113 pass low (7) to bot 52
+Robot 52 prop
+Robot 52 pass low (7) to bot 172
+Robot 172 prop
+Robot 172 pass low (2) to bot 106
+Robot 106 prop
+Robot 106 pass low (2) to bot 72
+Robot 72 prop
+Robot 72 pass low (2) to bot 207
+Robot 207 prop
+Robot 207 pass low (2) to bot 73
+Robot 73 prop
+Robot 73 pass low (2) to bot 21
+Robot 21 prop
+Robot 21 pass low (2) to bot 98
+Robot 98 prop
+Robot 98 pass low (2) to bot 185
+Robot 185 prop
+Robot 185 pass low (2) to bot 32
+Robot 32 prop
+Robot 32 pass low (2) to output 12
+Robot 32 pass high (37) to bot 6
+Robot 185 pass high (53) to bot 34
+Robot 98 pass high (5) to bot 184
+Robot 21 pass high (47) to bot 205
+Robot 73 pass high (59) to bot 19
+Robot 207 pass high (61) to bot 199
+Robot 72 pass high (3) to bot 43
+Robot 106 pass high (43) to bot 26
+Robot 172 pass high (7) to bot 190
+Robot 52 pass high (11) to bot 40
+Robot 113 pass high (17) to bot 56
+Robot 204 prop
+Robot 204 pass high (13) to bot 128
+Robot 128 prop
+Robot 128 pass low (13) to bot 56
+Robot 56 prop
+Robot 56 pass low (13) to bot 40
+Robot 40 prop
+Robot 40 pass low (11) to bot 190
+Robot 190 prop
+Robot 190 pass low (7) to bot 26
+Robot 26 prop
+Robot 26 pass low (7) to bot 43
+Robot 43 prop
+Robot 43 pass low (3) to bot 199
+Robot 199 prop
+Robot 199 pass low (3) to bot 19
+Robot 19 prop
+Robot 19 pass low (3) to bot 205
+Robot 205 prop
+Robot 205 pass low (3) to bot 184
+Robot 184 prop
+Robot 184 pass low (3) to bot 34
+Robot 34 prop
+Robot 34 pass low (3) to bot 6
+Robot 6 prop
+Robot 6 pass low (3) to output 7
+Robot 6 pass high (37) to bot 133
+Robot 34 pass high (53) to bot 135
+Robot 184 pass high (5) to bot 25
+Robot 205 pass high (47) to bot 126
+Robot 19 pass high (59) to bot 115
+Robot 199 pass high (61) to bot 191
+Robot 43 pass high (7) to bot 68
+Robot 26 pass high (43) to bot 12
+Robot 190 pass high (11) to bot 100
+Robot 40 pass high (13) to bot 39
+Robot 56 pass high (17) to bot 18
+Robot 128 pass high (19) to bot 91
+Robot 91 prop
+Robot 91 pass low (19) to bot 18
+Robot 18 prop
+Robot 18 pass low (17) to bot 39
+Robot 39 prop
+Robot 39 pass low (13) to bot 100
+Robot 100 prop
+Robot 100 pass low (11) to bot 12
+Robot 12 prop
+Robot 12 pass low (11) to bot 68
+Robot 68 prop
+Robot 68 pass low (7) to bot 191
+Robot 191 prop
+Robot 191 pass low (7) to bot 115
+Robot 115 prop
+Robot 115 pass low (7) to bot 126
+Robot 126 prop
+Robot 126 pass low (7) to bot 25
+Robot 25 prop
+Robot 25 pass low (5) to bot 135
+Robot 135 prop
+Robot 135 pass low (5) to bot 133
+Robot 133 prop
+Robot 133 pass low (5) to output 11
+Robot 133 pass high (37) to bot 20
+Robot 135 pass high (53) to bot 168
+Robot 25 pass high (7) to bot 150
+Robot 126 pass high (47) to bot 177
+Robot 115 pass high (59) to bot 38
+Robot 191 pass high (61) to bot 65
+Robot 68 pass high (11) to bot 17
+Robot 12 pass high (43) to bot 195
+Robot 100 pass high (13) to bot 154
+Robot 39 pass high (17) to bot 80
+Robot 18 pass high (19) to bot 174
+Robot 91 pass high (23) to bot 58
+Robot 58 prop
+Robot 58 pass low (23) to bot 174
+Robot 174 prop
+Robot 174 pass low (19) to bot 80
+Robot 80 prop
+Robot 80 pass low (17) to bot 154
+Robot 154 prop
+Robot 154 pass low (13) to bot 195
+Robot 195 prop
+Robot 195 pass low (13) to bot 17
+Robot 17 prop
+Robot 17 pass low (11) to bot 65
+Robot 65 prop
+Robot 65 pass low (11) to bot 38
+Robot 38 prop
+Robot 38 pass low (11) to bot 177
+Robot 177 prop
+Robot 177 pass low (11) to bot 150
+Robot 150 prop
+Robot 150 pass low (7) to bot 168
+Robot 168 prop
+Robot 168 pass low (7) to bot 20
+Robot 20 prop
+Robot 20 pass low (7) to output 8
+Robot 20 pass high (37) to bot 51
+Robot 168 pass high (53) to bot 170
+Robot 150 pass high (11) to bot 119
+Robot 177 pass high (47) to bot 102
+Robot 38 pass high (59) to bot 200
+Robot 65 pass high (61) to bot 123
+Robot 17 pass high (13) to bot 187
+Robot 195 pass high (43) to bot 75
+Robot 154 pass high (17) to bot 78
+Robot 80 pass high (19) to bot 159
+Robot 174 pass high (23) to bot 127
+Robot 58 pass high (29) to bot 69
+Robot 69 prop
+Robot 69 pass low (29) to bot 127
+Robot 127 prop
+Robot 69 pass high (31) to bot 0
+Robot 0 prop
+Robot 0 pass low (31) to bot 54
+Robot 0 pass high (41) to bot 163
+Robot 163 prop
+Robot 163 pass low (41) to bot 156
+Robot 163 pass high (67) to bot 155
+Robot 155 prop
+Robot 155 pass low (67) to bot 1
+Robot 155 pass high (71) to bot 57
+Robot 57 prop
+Robot 57 pass low (71) to bot 81
+Robot 57 pass high (73) to bot 3
+(127, ('bot', 159), ('bot', 54))
+Robot 127 prop
+Robot 127 pass low (23) to bot 159
+Robot 159 prop
+Robot 159 pass low (19) to bot 78
+Robot 78 prop
+Robot 78 pass low (17) to bot 75
+Robot 75 prop
+Robot 75 pass low (17) to bot 187
+Robot 187 prop
+Robot 187 pass low (13) to bot 123
+Robot 123 prop
+Robot 123 pass low (13) to bot 200
+Robot 200 prop
+Robot 200 pass low (13) to bot 102
+Robot 102 prop
+Robot 102 pass low (13) to bot 119
+Robot 119 prop
+Robot 119 pass low (11) to bot 170
+Robot 170 prop
+Robot 170 pass low (11) to bot 51
+Robot 51 prop
+Robot 51 pass low (11) to output 6
+Robot 51 pass high (37) to bot 189
+Robot 170 pass high (53) to bot 176
+Robot 119 pass high (13) to bot 120
+Robot 102 pass high (47) to bot 181
+Robot 200 pass high (59) to bot 202
+Robot 123 pass high (61) to bot 101
+Robot 187 pass high (17) to bot 193
+Robot 75 pass high (43) to bot 173
+Robot 78 pass high (19) to bot 131
+Robot 159 pass high (23) to bot 192
+Robot 127 prop
+Robot 127 pass high (29) to bot 54
+Robot 54 prop
+Robot 54 pass low (29) to bot 192
+Robot 192 prop
+Robot 192 pass low (23) to bot 131
+Robot 131 prop
+Robot 131 pass low (19) to bot 173
+Robot 173 prop
+Robot 173 pass low (19) to bot 193
+Robot 193 prop
+Robot 193 pass low (17) to bot 101
+Robot 101 prop
+Robot is 101
+Robot 101 pass low (17) to bot 202
+Robot 202 prop
+Robot 202 pass low (17) to bot 181
+Robot 181 prop
+Robot 181 pass low (17) to bot 120
+Robot 120 prop
+Robot 120 pass low (13) to bot 176
+Robot 176 prop
+Robot 176 pass low (13) to bot 189
+Robot 189 prop
+Robot 189 pass low (13) to output 15
+Robot 189 pass high (37) to bot 30
+Robot 176 pass high (53) to bot 35
+Robot 120 pass high (17) to bot 87
+Robot 181 pass high (47) to bot 136
+Robot 202 pass high (59) to bot 5
+Robot 101 pass high (61) to bot 66
+Robot 193 pass high (19) to bot 132
+Robot 173 pass high (43) to bot 63
+Robot 131 pass high (23) to bot 74
+Robot 192 pass high (29) to bot 89
+Robot 54 pass high (31) to bot 156
+Robot 156 prop
+Robot 156 pass low (31) to bot 89
+Robot 89 prop
+Robot 89 pass low (29) to bot 74
+Robot 74 prop
+Robot 74 pass low (23) to bot 63
+Robot 63 prop
+Robot 63 pass low (23) to bot 132
+Robot 132 prop
+Robot 132 pass low (19) to bot 66
+Robot 66 prop
+Robot 66 pass low (19) to bot 5
+Robot 5 prop
+Robot 5 pass low (19) to bot 136
+Robot 136 prop
+Robot 136 pass low (19) to bot 87
+Robot 87 prop
+Robot 87 pass low (17) to bot 35
+Robot 35 prop
+Robot 35 pass low (17) to bot 30
+Robot 30 prop
+Robot 30 pass low (17) to output 14
+Robot 30 pass high (37) to bot 99
+Robot 35 pass high (53) to bot 11
+Robot 87 pass high (19) to bot 92
+Robot 136 pass high (47) to bot 196
+Robot 5 pass high (59) to bot 206
+Robot 66 pass high (61) to bot 141
+Robot 132 pass high (23) to bot 167
+Robot 63 pass high (43) to bot 70
+Robot 74 pass high (29) to bot 28
+Robot 89 pass high (31) to bot 117
+Robot 156 pass high (41) to bot 1
+Robot 1 prop
+Robot 1 pass low (41) to bot 117
+Robot 117 prop
+Robot 117 pass low (31) to bot 28
+Robot 28 prop
+Robot 28 pass low (29) to bot 70
+Robot 70 prop
+Robot 70 pass low (29) to bot 167
+Robot 167 prop
+Robot 167 pass low (23) to bot 141
+Robot 141 prop
+Robot 141 pass low (23) to bot 206
+Robot 206 prop
+Robot 206 pass low (23) to bot 196
+Robot 196 prop
+Robot 196 pass low (23) to bot 92
+Robot 92 prop
+Robot 92 pass low (19) to bot 11
+Robot 11 prop
+Robot 11 pass low (19) to bot 99
+Robot 99 prop
+Robot 99 pass low (19) to output 20
+Robot 99 pass high (37) to bot 96
+Robot 11 pass high (53) to bot 148
+Robot 92 pass high (23) to bot 7
+Robot 196 pass high (47) to bot 45
+Robot 206 pass high (59) to bot 55
+Robot 141 pass high (61) to bot 125
+Robot 167 pass high (29) to bot 158
+Robot 70 pass high (43) to bot 162
+Robot 28 pass high (31) to bot 79
+Robot 117 pass high (41) to bot 124
+Robot 1 pass high (67) to bot 81
+Robot 81 prop
+Robot 81 pass low (67) to bot 124
+Robot 124 prop
+Robot 124 pass low (41) to bot 79
+Robot 79 prop
+Robot 79 pass low (31) to bot 162
+Robot 162 prop
+Robot 162 pass low (31) to bot 158
+Robot 158 prop
+Robot 158 pass low (29) to bot 125
+Robot 125 prop
+Robot 125 pass low (29) to bot 55
+Robot 55 prop
+Robot 55 pass low (29) to bot 45
+Robot 45 prop
+Robot 45 pass low (29) to bot 7
+Robot 7 prop
+Robot 7 pass low (23) to bot 148
+Robot 148 prop
+Robot 148 pass low (23) to bot 96
+Robot 96 prop
+Robot 96 pass low (23) to output 1
+Robot 96 pass high (37) to bot 29
+Robot 148 pass high (53) to bot 146
+Robot 7 pass high (29) to bot 22
+Robot 45 pass high (47) to bot 194
+Robot 55 pass high (59) to bot 44
+Robot 125 pass high (61) to bot 169
+Robot 158 pass high (31) to bot 143
+Robot 162 pass high (43) to bot 59
+Robot 79 pass high (41) to bot 147
+Robot 124 pass high (67) to bot 83
+Robot 81 pass high (71) to bot 3
+Robot 3 prop
+Robot 3 pass low (71) to bot 83
+Robot 83 prop
+Robot 83 pass low (67) to bot 147
+Robot 147 prop
+Robot 147 pass low (41) to bot 59
+Robot 59 prop
+Robot 59 pass low (41) to bot 143
+Robot 143 prop
+Robot 143 pass low (31) to bot 169
+Robot 169 prop
+Robot 169 pass low (31) to bot 44
+Robot 44 prop
+Robot 44 pass low (31) to bot 194
+Robot 194 prop
+Robot 194 pass low (31) to bot 22
+Robot 22 prop
+Robot 22 pass low (29) to bot 146
+Robot 146 prop
+Robot 146 pass low (29) to bot 29
+Robot 29 prop
+Robot 29 pass low (29) to output 9
+Robot 29 pass high (37) to bot 164
+Robot 146 pass high (53) to bot 86
+Robot 22 pass high (31) to bot 33
+Robot 194 pass high (47) to bot 137
+Robot 44 pass high (59) to bot 180
+Robot 169 pass high (61) to bot 47
+Robot 143 pass high (41) to bot 76
+Robot 59 pass high (43) to bot 198
+Robot 147 pass high (67) to bot 62
+Robot 83 pass high (71) to bot 105
+Robot 3 pass high (73) to bot 105
+Robot 105 prop
+Robot 105 pass low (71) to bot 62
+Robot 62 prop
+Robot 62 pass low (67) to bot 198
+Robot 198 prop
+Robot 198 pass low (43) to bot 76
+Robot 76 prop
+Robot 76 pass low (41) to bot 47
+Robot 47 prop
+Robot 47 pass low (41) to bot 180
+Robot 180 prop
+Robot 180 pass low (41) to bot 137
+Robot 137 prop
+Robot 137 pass low (41) to bot 33
+Robot 33 prop
+Robot 33 pass low (31) to bot 86
+Robot 86 prop
+Robot 86 pass low (31) to bot 164
+Robot 164 prop
+Robot 164 pass low (31) to output 0
+Robot 164 pass high (37) to bot 61
+Robot 86 pass high (53) to bot 166
+Robot 33 pass high (41) to bot 46
+Robot 137 pass high (47) to bot 144
+Robot 180 pass high (59) to bot 93
+Robot 47 pass high (61) to bot 153
+Robot 76 pass high (43) to bot 152
+Robot 198 pass high (67) to bot 71
+Robot 62 pass high (71) to bot 122
+Robot 105 pass high (73) to bot 122
+Robot 122 prop
+Robot 122 pass low (71) to bot 71
+Robot 71 prop
+Robot 71 pass low (67) to bot 152
+Robot 152 prop
+Robot 152 pass low (43) to bot 153
+Robot 153 prop
+Robot 153 pass low (43) to bot 93
+Robot 93 prop
+Robot 93 pass low (43) to bot 144
+Robot 144 prop
+Robot 144 pass low (43) to bot 46
+Robot 46 prop
+Robot 46 pass low (41) to bot 166
+Robot 166 prop
+Robot 166 pass low (41) to bot 61
+Robot 61 prop
+Robot 61 pass low (37) to output 5
+Robot 61 pass high (41) to bot 138
+Robot 166 pass high (53) to bot 85
+Robot 46 pass high (43) to bot 49
+Robot 144 pass high (47) to bot 107
+Robot 93 pass high (59) to bot 60
+Robot 153 pass high (61) to bot 160
+Robot 152 pass high (67) to bot 121
+Robot 71 pass high (71) to bot 165
+Robot 122 pass high (73) to bot 165
+Robot 165 prop
+Robot 165 pass low (71) to bot 121
+Robot 121 prop
+Robot 121 pass low (67) to bot 160
+Robot 160 prop
+Robot 160 pass low (61) to bot 60
+Robot 60 prop
+Robot 60 pass low (59) to bot 107
+Robot 107 prop
+Robot 107 pass low (47) to bot 49
+Robot 49 prop
+Robot 49 pass low (43) to bot 85
+Robot 85 prop
+Robot 85 pass low (43) to bot 138
+Robot 138 prop
+Robot 138 pass low (41) to output 19
+Robot 138 pass high (43) to bot 37
+Robot 85 pass high (53) to bot 197
+Robot 49 pass high (47) to bot 188
+Robot 107 pass high (59) to bot 48
+Robot 60 pass high (61) to bot 23
+Robot 160 pass high (67) to bot 53
+Robot 121 pass high (71) to bot 110
+Robot 165 pass high (73) to bot 110
+Robot 110 prop
+Robot 110 pass low (71) to bot 53
+Robot 53 prop
+Robot 53 pass low (67) to bot 23
+Robot 23 prop
+Robot 23 pass low (61) to bot 48
+Robot 48 prop
+Robot 48 pass low (59) to bot 188
+Robot 188 prop
+Robot 188 pass low (47) to bot 197
+Robot 197 prop
+Robot 197 pass low (47) to bot 37
+Robot 37 prop
+Robot 37 pass low (43) to output 16
+Robot 37 pass high (47) to bot 134
+Robot 197 pass high (53) to bot 111
+Robot 188 pass high (59) to bot 64
+Robot 48 pass high (61) to bot 108
+Robot 23 pass high (67) to bot 139
+Robot 53 pass high (71) to bot 145
+Robot 110 pass high (73) to bot 145
+Robot 145 prop
+Robot 145 pass low (71) to bot 139
+Robot 139 prop
+Robot 139 pass low (67) to bot 108
+Robot 108 prop
+Robot 108 pass low (61) to bot 64
+Robot 64 prop
+Robot 64 pass low (59) to bot 111
+Robot 111 prop
+Robot 111 pass low (53) to bot 134
+Robot 134 prop
+Robot 134 pass low (47) to output 10
+Robot 134 pass high (53) to bot 182
+Robot 111 pass high (59) to bot 13
+Robot 64 pass high (61) to bot 118
+Robot 108 pass high (67) to bot 42
+Robot 139 pass high (71) to bot 88
+Robot 145 pass high (73) to bot 88
+Robot 88 prop
+Robot 88 pass low (71) to bot 42
+Robot 42 prop
+Robot 42 pass low (67) to bot 118
+Robot 118 prop
+Robot 118 pass low (61) to bot 13
+Robot 13 prop
+Robot 13 pass low (59) to bot 182
+Robot 182 prop
+Robot 182 pass low (53) to output 2
+Robot 182 pass high (59) to bot 97
+Robot 13 pass high (61) to bot 50
+Robot 118 pass high (67) to bot 114
+Robot 42 pass high (71) to bot 104
+Robot 88 pass high (73) to bot 104
+Robot 104 prop
+Robot 104 pass low (71) to bot 114
+Robot 114 prop
+Robot 114 pass low (67) to bot 50
+Robot 50 prop
+Robot 50 pass low (61) to bot 97
+Robot 97 prop
+Robot 97 pass low (59) to output 18
+Robot 97 pass high (61) to bot 129
+Robot 50 pass high (67) to bot 24
+Robot 114 pass high (71) to bot 149
+Robot 104 pass high (73) to bot 149
+Robot 149 prop
+Robot 149 pass low (71) to bot 24
+Robot 24 prop
+Robot 24 pass low (67) to bot 129
+Robot 129 prop
+Robot 129 pass low (61) to output 17
+Robot 129 pass high (67) to bot 2
+Robot 24 pass high (71) to bot 130
+Robot 149 pass high (73) to bot 130
+Robot 130 prop
+Robot 130 pass low (71) to bot 2
+Robot 2 prop
+Robot 2 pass low (67) to output 3
+Robot 2 pass high (71) to bot 208
+Robot 130 pass high (73) to bot 208
+Robot 208 prop
+Robot 208 pass low (71) to output 4
+Robot 208 pass high (73) to output 13
+Part 1: See printout for answer
+Part 2: 0
