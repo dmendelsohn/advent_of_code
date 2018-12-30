@@ -1,0 +1,72 @@
+#ip 4           # Initial conditions, a = 1, b = c = d = ip = f = 0
+addi 4 16 4     # ip = ip+16+1 = 17 (Line 19)
+seti 1 8 1      # b = 1, ip = 2
+seti 1 3 5      # f = 1, ip = 3
+mulr 1 5 3      # d = b*f, ip = 4
+eqrr 3 2 3      # d = (c==d), ip = 5
+addr 3 4 4      # ip = ip+d = d+5  (either skip an instruction or don't)
+addi 4 1 4      # ip = ip+1+1 = 8  (skip an instruction)
+addr 1 0 0      # a = a+b, ip = 8
+addi 5 1 5      # f = f+1, ip = 9
+gtrr 5 2 3      # d = (f > c), ip = 10
+addr 4 3 4      # ip = ip+d+1 = d+11  (either skip an instruction or don't)
+seti 2 2 4      # ip = 2+1 = 3 (line 5)
+addi 1 1 1      # b = b+1, ip = 13
+gtrr 1 2 3      # d = (b > c), ip = 14
+addr 3 4 4      # ip = ip+d+1 = d+15  (Either skip a line or don't)
+seti 1 4 4      # ip = 1+1 = 2 (line 4)
+mulr 4 4 4      # ip = ip*ip+1 = 257 (EXIT PROGRAM)
+addi 2 2 2      # c += c+2, ip = 18
+mulr 2 2 2      # c = c^2, ip = 19
+mulr 4 2 2      # c = 19*c, ip = 20
+muli 2 11 2     # c = 11*c, ip = 21
+addi 3 6 3      # d = d+6, ip = 22
+mulr 3 4 3      # d = 22*d, ip = 23
+addi 3 8 3      # d = d+8, ip = 24
+addr 2 3 2      # c = c+d, ip = 25
+addr 4 0 4      # ip = ip+a+1 = a+26  (first time, this is 27)
+seti 0 1 4      # ip = 0+1 = 1
+setr 4 4 3      # d = ip = 27, ip = 28
+mulr 3 4 3      # d = 28*d, ip = 29
+addr 4 3 3      # d = d+29, ip = 30
+mulr 4 3 3      # d = 30*d, ip = 31
+muli 3 14 3     # d = 14*d, ip = 32
+mulr 3 4 3      # d = 32*d, ip = 33
+addr 2 3 2      # c = c+d
+seti 0 4 0      # a = 0
+seti 0 7 4      # ip = 0+1 = 1  (line 3)
+
+# Summaries:
+(A) Lines 19-22 ... c = (c+2)^2 * 19 * 11 = 209c^2 + 836*c + 836
+(B) Lines 23-25 ... d = (d+6)*22 + 8 = 22d + 140
+(C) Lines 29-34 ... d = ((27*28)+29)*30*14*32 = 10550400
+
+# Narrative... start at a = 1, others all 0
+# Line 2 always jumps to Line 19
+# Block A sets c=836
+# Block B sets d=140
+# Line 26 (c=c+d) sets c = 976
+# Line 27 jumps to Line 29
+# Block C sets d=10550400
+# Line 35 (c=c+d) sets c = 10551376
+# Line 36 sets a = 0
+# Line 37 jumps to Line 3
+# Lines 3-4 set b = f = 1
+# Line 5 (d=b*f) sets d = 1
+# Line 6 (d = (c==d)) sets d = 0
+# Line 7 jumps to Line 8, which always jumps to Line 10
+# Line 10 (f+=1) sets f = 2
+# Line 11 (d = (f > c)) sets d = 0
+# Line 12 jumps to Line 13, which always jumps to Line 5
+# Line 5 (d=b*f) sets d = 2  ... b is going to be 1 for a while and f is going to increment
+# Line 6 (d = (c==d)) sets d = 0 ... c is massive, will take d a while to get that big
+# Lines 7,8,10,11,12,13 increments f to f=3, and jumps to Line 5
+# ... inner loops continues to increment f until it d*1 matches c and Line 12 skips to Line 14 for the first time
+# Line 14 increments b, sets b=2
+# Line 15 (d = (b>c)) sets d = 0 ... this will happen for a while
+# Line 16 jumps to Line 17 which always jumps to Line 4, which resets f=1
+# ... inner loop continues to increment f until d*2 matches c and Line 13 skips to Line 14, increment b to b = 3
+# ... As long as b <= c, keep doing the inner loop with b incrementing in the outer loop
+# ... when b is a factor of 10551376, aggregate it in a
+# ... end result...a is sum of factors of 10551376
+# ... part 1 was just the sam thing, except factors of 976 instead
