@@ -12,7 +12,7 @@ addr 1 4 1          # R1 = R1 + R4, ip=10
 bani 1 16777215 1   # R1 = R1 & 16777215, ip=11     # low 3 bytes
 muli 1 65899 1      # R1 = R1 * 65899, ip=12
 bani 1 16777215 1   # R1 = R1 & 16777215, ip=13
-gtir 256 2 4        # R4 = (R2 <= 256), ip=14
+gtir 256 2 4        # R4 = (R2 < 256), ip=14
 addr 4 5 5          # ip = ip + R4 + 1  # Either skip instruction or don't
 addi 5 1 5          # ip = 17  # Skip a line, to line 19
 seti 27 6 5         # ip = 28  # Skip to line 30
@@ -43,7 +43,7 @@ Line 11 (R1 += R4) keeps R1 = 6663054
 Line 12 (R1 mask 3 bytes) keeps R1 = 6663054  ... I think this is just to be nice to fixed with integer languages?
 Line 13 (R1 *= 65899) sets R1 = 439088595546
 Line 14 (R1 mask 3 bytes) sets R1 = 12075610
-Line 15 (R4 = (R2 <= 256)) sets R4 = 0, so we continue to Line 17 which always jumps to Line 19
+Line 15 (R4 = (R2 < 256)) sets R4 = 0, so we continue to Line 17 which always jumps to Line 19
 Line 19 sets R4 = 0
 Line 20 (R3 = R4+1) sets R3 = 1
 Line 21 (R3 *= 256) sets R3 = 256
@@ -53,5 +53,16 @@ Line 26 increments R4, R4 = 1, then we skip to Line 20
 ...exiting inner loop happens when R4=256 and sends us to Line 25 which always jumps to Line 28
 Line 28 (R2=R4) sets R2=256, then skip to Line 10
 Line 10 (R4 = R2 & 255) sets R4=0  (just like last time)
-Lines 11-14 set R1 = 12075610 (again)
-Line 15 (R4 = R2<256) sets R4 = 0 (again), so we continue to Line 17 which always jumpts to Line 19
+Lines 11-14 set R1 = 10491294  (multiply and mask R1)
+Line 15 (R4 = R2 < 256) sets R4 = 0 (again) so we continue to Line 17 which always jumps to Line 19
+... we get back into the inner loop but it's super quick because we exit when R4=1 (first time through)
+Line 28 (R2=R4) sets R2=1, then skip to Line 10
+Line 10 (R4 = R2 & 255) sets R4 = 1
+Lines 11-14 set R1 = 10332277
+Line 15 (r4 = R2 < 256) sets R4 = 1 (different!) so we skip to Line 18, which always skips to Line 30
+Line 30, assuming we don't exit, skips to Line 32 which always jumps to Line 8
+Line 8 (R2=R1) sets R2 = 10332277
+Line 9 sets R1 = 6663054
+Line 10 (R4 = R2 & 255) sets R4 = 117
+
+
