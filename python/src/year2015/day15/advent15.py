@@ -1,5 +1,6 @@
-import operator
 import functools
+import operator
+
 
 # Returns tuple (ingredient, (capacity, durability, flavor, texture, calories))
 def parseIngredient(line):

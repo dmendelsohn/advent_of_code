@@ -1,5 +1,5 @@
-from collections import namedtuple
 import re
+from collections import namedtuple
 
 Particle = namedtuple("Particle", ["xstart", "ystart", "xvel", "yvel"])
 

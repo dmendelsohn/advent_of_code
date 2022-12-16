@@ -1,5 +1,6 @@
-import itertools
 import copy
+import itertools
+
 from Queue import PriorityQueue
 
 PRINT_INTERVAL = 10000

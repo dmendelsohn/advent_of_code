@@ -1,6 +1,6 @@
+import re
 from collections import defaultdict
 from pathlib import Path
-import re
 from typing import NamedTuple, Set
 
 INPUT_PATH = Path(__file__).parent / "input.txt"

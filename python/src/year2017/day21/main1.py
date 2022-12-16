@@ -1,8 +1,8 @@
+import math
 import os
 import re
 import string
 import sys
-import math
 
 
 def main():

@@ -1,5 +1,5 @@
-from collections import namedtuple
 import itertools
+from collections import namedtuple
 
 
 class Point(namedtuple("Point", ["x", "y", "z", "t"])):

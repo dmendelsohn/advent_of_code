@@ -1,5 +1,5 @@
-from pathlib import Path
 import re
+from pathlib import Path
 from typing import List, NamedTuple, Set, Tuple
 
 INPUT_PATH = Path(__file__).parent / "input.txt"

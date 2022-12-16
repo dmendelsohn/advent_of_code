@@ -1,5 +1,6 @@
-from Queue import Queue
 import itertools
+
+from Queue import Queue
 
 DIRS = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
