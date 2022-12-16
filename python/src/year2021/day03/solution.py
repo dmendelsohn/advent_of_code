@@ -63,8 +63,8 @@ def iterative_filter(binary_strs: List[str], is_min_filter: bool) -> str:
 def part_2() -> str:
     binary_strs = parse_input()
     first_reading_bits = iterative_filter(binary_strs, False)
-    first_reading = get_num_from_bits(first_reading_bits)
+    first_reading = get_num_from_bits(list(first_reading_bits))
     second_reading_bits = iterative_filter(binary_strs, True)
-    second_reading = get_num_from_bits(second_reading_bits)
+    second_reading = get_num_from_bits(list(second_reading_bits))
     print(f"First: {first_reading}, Second: {second_reading}")
     return f"{first_reading * second_reading}"

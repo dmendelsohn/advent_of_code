@@ -30,7 +30,7 @@ def part_1() -> str:
         elif command.direction == "up":
             depth -= command.distance
         else:
-            raise ValueError(f"Unknown direction: {command.direcdtion}")
+            raise ValueError(f"Unknown direction: {command.direction}")
     print(f"horiz={horiz}, depth={depth}")
     return f"{horiz * depth}"
 
@@ -47,6 +47,6 @@ def part_2() -> str:
         elif command.direction == "up":
             aim -= command.distance
         else:
-            raise ValueError(f"Unknown direction: {command.direcdtion}")
+            raise ValueError(f"Unknown direction: {command.direction}")
     print(f"horiz={horiz}, depth={depth}")
     return f"{horiz * depth}"
