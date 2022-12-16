@@ -46,19 +46,19 @@ class Box(NamedTuple):
         z_int = self.z_int.clamp(other.z_int)
         return Box(x_int, y_int, z_int) if x_int and y_int and z_int else None
 
-    def mask(self, other: "Box") -> Set["Box"]:
+    def mask(self, _other: "Box") -> Set["Box"]:
         """
         Emit 1 or more boxes resulting from cutting out the other box
         Strategy: cut off boxes from self until other is all that is left
         """
-        other = other.clamp(self)
+        other = _other.clamp(self)
         if not other:
             # No intersection
             return {self}
 
         # Otherwise, carve out pieces of self until just other is left
         remaining = self
-        offcuts = set()
+        offcuts: Set[Box] = set()
 
         # x off cuts
         offcut_ints = remaining.x_int.get_offcuts(other.x_int)
@@ -112,7 +112,7 @@ def get_on_boxes_after_step(on_boxes: Set[Box], step: RebootStep) -> Set[Box]:
 
 def apply_steps(steps: List[RebootStep]) -> Set[Box]:
     """Return the on-boxes"""
-    on_boxes = set()
+    on_boxes: Set[Box] = set()
     for step in steps:
         on_boxes = get_on_boxes_after_step(on_boxes, step)
     return on_boxes
@@ -145,7 +145,7 @@ def part_1(use_test_input: bool = False) -> str:
     boundary_box = Box(Interval(-50, 50), Interval(-50, 50), Interval(-50, 50))
     steps = parse_input(use_test_input)
     on_boxes = apply_steps(steps)
-    on_boxes = {on_box.clamp(boundary_box) for on_box in on_boxes}
+    on_boxes = {clamped_box for on_box in on_boxes if (clamped_box := on_box.clamp(boundary_box))}
     num_lights = sum(on_box.size() for on_box in on_boxes if on_box)
     return f"{num_lights}"
 
