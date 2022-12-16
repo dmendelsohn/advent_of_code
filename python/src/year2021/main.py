@@ -3,7 +3,7 @@ import importlib
 
 
 def main(day_num: int, part_num: int, is_test: bool) -> None:
-    selected_solution_module = importlib.import_module(f"days.day{day_num:02d}.solution")
+    selected_solution_module = importlib.import_module(f"day{day_num:02d}.solution")
     selected_part_func = getattr(selected_solution_module, f"part_{part_num}")
     if day_num < 7:  # Didn't support is_test yet
         solution = selected_part_func()
@@ -15,7 +15,7 @@ def main(day_num: int, part_num: int, is_test: bool) -> None:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("TODO")
+    parser = argparse.ArgumentParser("Runner for Advent of Code 2021 Python solutions")
     parser.add_argument("-d", "--day", dest="day", type=int)
     parser.add_argument("-p", "--part", dest="part", type=int)
     parser.add_argument("--test", action="store_true")
