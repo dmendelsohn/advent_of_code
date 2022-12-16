@@ -1,7 +1,7 @@
 from functools import total_ordering
 from pathlib import Path
 from queue import PriorityQueue
-from typing import Dict, List, NamedTuple, Optional, Set
+from typing import Any, Dict, List, NamedTuple, Optional, Set
 
 INPUT_PATH = Path(__file__).parent / "input.txt"
 TEST_INPUT_PATH = Path(__file__).parent / "test_input.txt"
@@ -28,7 +28,9 @@ class WeightedPath(NamedTuple):
     def add(self, point: Point, weight: int) -> "WeightedPath":
         return WeightedPath(self.points[:] + [point], self.weight + weight)
 
-    def __lt__(self, other: "WeightedPath") -> bool:
+    def __lt__(self, other: Any) -> bool:
+        if not isinstance(other, WeightedPath):
+            raise ValueError(f"Cannot compare WeightedPath to {other=}")
         return self.weight < other.weight
 
 
@@ -63,7 +65,7 @@ def find_shortest_path(graph: Graph) -> Optional[WeightedPath]:
     }
     unvisited_points = set(graph.keys())
 
-    path_queue = PriorityQueue()
+    path_queue: PriorityQueue = PriorityQueue()
     path_queue.put(tentative_paths[start])
 
     # Loop until we find the exit
@@ -73,6 +75,8 @@ def find_shortest_path(graph: Graph) -> Optional[WeightedPath]:
             break
 
         path_to_current_point = tentative_paths[current_point]
+        if path_to_current_point is None:
+            raise RuntimeError("Unexpected NoneType for path_to_current_point")
         for neighbor in current_point.neighbors():
             if neighbor in graph and neighbor in unvisited_points:
                 proposed_path_to_neighbor = path_to_current_point.add(
