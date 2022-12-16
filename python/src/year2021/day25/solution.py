@@ -80,5 +80,5 @@ def part_1(use_test_input: bool = False) -> str:
 
 
 def part_2(use_test_input: bool = False) -> str:
-    grid = parse_input(use_test_input)
+    grid = parse_input(use_test_input)  # noqa
     pass

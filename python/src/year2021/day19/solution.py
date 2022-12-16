@@ -61,10 +61,12 @@ def align_reading_set(
     this: ReadingSet, ref: ReadingSet
 ) -> Optional[Tuple[ReadingSet, Rotation, Translation]]:
     """
-    Try rotation and translations of this reading set to see if we can get 12-point overlap with the ref reading set
-    If so, return a merged reading set with the entire ref set and the rotated + aligned version of this set
-    If not, return None
-    If there are multiple ways to align, we pick one arbitrarily
+    Try rotation and translations of this reading set to see if we can get 12-point overlap
+      with the ref reading set.
+    If so, return a merged reading set with the entire ref set and the rotated + aligned
+      version of this set.
+    If not, return None.
+    If there are multiple ways to align, we pick one arbitrarily.
     """
     for rotation in get_rotations():
         rotated_reading_set = rotate_reading_set(this, rotation)
@@ -79,7 +81,8 @@ def align_reading_set_translate(
     this: ReadingSet, ref: ReadingSet
 ) -> Optional[Tuple[ReadingSet, Translation]]:
     """
-    Try just translations of this reading set to see if we can get 12-point overlap with the ref reading set
+    Try just translations of this reading set to see if we can get 12-point overlap
+      with the ref reading set.
     If so, return a copy of this reading set translated into the other reading set's frame
     If not, return None
     If there are multiple ways to align, we pick one arbitrarily
@@ -118,7 +121,7 @@ def align_all_reading_sets(
             result = align_reading_set(unaligned_reading_set, ref_reading_set)
             if result is not None:
                 aligned_reading_set, rotation, translation = result
-                # Found an alignment!  Add this scanner to the align_to_queue and update tracker vars
+                # Found an alignment! Add this scanner to the align_to_queue and update tracker vars
                 print(f"Found an alignment ({unaligned_scanner} to {ref_scanner})")
                 scanner_to_reading_set[unaligned_scanner] = aligned_reading_set
                 aligned_scanners.add(unaligned_scanner)
@@ -184,6 +187,7 @@ def part_2(use_test_input: bool = False) -> str:
             if dist > max_dist:
                 max_dist = dist
                 print(
-                    f"Found new max of {dist} ({first_scanner} at {first_vector} to {second_scanner} at {second_vector}"
+                    f"Found new max of {dist} "
+                    f"({first_scanner} at {first_vector} to {second_scanner} at {second_vector}"
                 )
     return f"{max_dist}"

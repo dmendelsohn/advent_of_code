@@ -51,21 +51,17 @@ def get_model_num_if_valid(frames: List[Frame], strategy: Strategy) -> Optional[
     return model_num if z == 0 else None
 
 
-def get_max_valid_num() -> str:
-    valid_model_nums = [get_model_num_if_valid(FRAMES, s) for s in get_all_strategies()]
-    valid_model_nums = [num for num in valid_model_nums if num is not None]
-    return max(valid_model_nums)
-
-
 def part_1(use_test_input: bool = False) -> str:
     print(
-        "Help from https://github.com/dphilipson/advent-of-code-2021/blob/master/src/days/day24.rs and hand-solved"
+        "Help from https://github.com/dphilipson/advent-of-code-2021/blob/master/src/days/day24.rs"
+        " and hand-solved"
     )
     return str(92967699949891)
 
 
 def part_2(use_test_input: bool = False) -> str:
     print(
-        "Help from https://github.com/dphilipson/advent-of-code-2021/blob/master/src/days/day24.rs and hand-solved"
+        "Help from https://github.com/dphilipson/advent-of-code-2021/blob/master/src/days/day24.rs"
+        " and hand-solved"
     )
     return str(91411143612181)
