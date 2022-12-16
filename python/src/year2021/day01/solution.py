@@ -13,7 +13,7 @@ def part_1() -> str:
     depths = get_input_ints()
     num_inc = 0
     for i in range(1, len(depths)):
-        if depths[i] > depths[i-1]:
+        if depths[i] > depths[i - 1]:
             num_inc += 1
     return str(num_inc)
 
@@ -22,6 +22,6 @@ def part_2() -> str:
     depths = get_input_ints()
     num_inc = 0
     for i in range(3, len(depths)):
-        if depths[i] > depths[i-3]:
+        if depths[i] > depths[i - 3]:
             num_inc += 1
     return str(num_inc)

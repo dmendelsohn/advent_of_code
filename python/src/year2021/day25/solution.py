@@ -18,10 +18,10 @@ def shift_row(grid: Grid, r: int) -> int:
     can_wrap = grid[r][0] == "."
     c = 0
     while c < len(grid[0]) - 1:
-        if grid[r][c] == ">" and grid[r][c+1] == ".":
+        if grid[r][c] == ">" and grid[r][c + 1] == ".":
             num_moves += 1
             grid[r][c] = "."
-            grid[r][c+1] = ">"
+            grid[r][c + 1] = ">"
             c += 1
         c += 1
     if c == len(grid[0]) - 1 and grid[r][-1] == ">" and can_wrap:
@@ -36,10 +36,10 @@ def shift_col(grid: Grid, c: int) -> int:
     can_wrap = grid[0][c] == "."
     r = 0
     while r < len(grid) - 1:
-        if grid[r][c] == "v" and grid[r+1][c] == ".":
+        if grid[r][c] == "v" and grid[r + 1][c] == ".":
             num_moves += 1
             grid[r][c] = "."
-            grid[r+1][c] = "v"
+            grid[r + 1][c] = "v"
             r += 1
         r += 1
     if r == len(grid) - 1 and grid[-1][c] == "v" and can_wrap:

@@ -44,8 +44,10 @@ def part_1(use_test_input: bool = False) -> str:
     return f"{total}"
 
 
-def get_basin(grid: List[List[int]], row: int, col: int, visited_points: Set[Tuple[int, int]]) -> Set[Tuple[int, int]]:
-    """ Get all points in basin that includes (row, col) """
+def get_basin(
+    grid: List[List[int]], row: int, col: int, visited_points: Set[Tuple[int, int]]
+) -> Set[Tuple[int, int]]:
+    """Get all points in basin that includes (row, col)"""
     # If location is visited, exit early, otherwise mark location as visited
     if (row, col) in visited_points:
         return set()

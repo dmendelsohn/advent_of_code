@@ -1,11 +1,12 @@
 import argparse
 from enum import Enum
 
+
 class CartDirection(Enum):
-    UP = '^'
-    DOWN = 'v'
-    LEFT = '<'
-    RIGHT = '>'
+    UP = "^"
+    DOWN = "v"
+    LEFT = "<"
+    RIGHT = ">"
 
     @classmethod
     def get_track_part(cls, direction):  # Helper for parsing input
@@ -17,7 +18,7 @@ class CartDirection(Enum):
     @classmethod
     def get_next_direction(cls, direction, track_part, turn_count=0):  # Helper to execute turns
         if track_part == TrackPart.EMPTY:
-            raise ValueError('Cart should not be on empty space')
+            raise ValueError("Cart should not be on empty space")
         elif track_part in (TrackPart.HORIZ, TrackPart.VERT):
             return direction  # No need to change
         elif track_part == TrackPart.FWD_TURN:
@@ -25,7 +26,7 @@ class CartDirection(Enum):
                 cls.RIGHT: cls.UP,
                 cls.UP: cls.RIGHT,
                 cls.LEFT: cls.DOWN,
-                cls.DOWN: cls.LEFT
+                cls.DOWN: cls.LEFT,
             }
             return mapping[direction]
         elif track_part == TrackPart.BACK_TURN:
@@ -33,7 +34,7 @@ class CartDirection(Enum):
                 cls.UP: cls.LEFT,
                 cls.LEFT: cls.UP,
                 cls.DOWN: cls.RIGHT,
-                cls.RIGHT: cls.DOWN
+                cls.RIGHT: cls.DOWN,
             }
             return mapping[direction]
         elif track_part == TrackPart.INTER:
@@ -42,21 +43,21 @@ class CartDirection(Enum):
                     cls.UP: cls.LEFT,
                     cls.LEFT: cls.DOWN,
                     cls.DOWN: cls.RIGHT,
-                    cls.RIGHT: cls.UP
+                    cls.RIGHT: cls.UP,
                 }
                 return mapping[direction]
-            elif turn_count % 3 == 1: # Go straight
+            elif turn_count % 3 == 1:  # Go straight
                 return direction
             else:  # Turn right
                 mapping = {
                     cls.UP: cls.RIGHT,
                     cls.RIGHT: cls.DOWN,
                     cls.DOWN: cls.LEFT,
-                    cls.LEFT: cls.UP
+                    cls.LEFT: cls.UP,
                 }
                 return mapping[direction]
         else:
-            raise TypeError('Unrecognized TrackPart {}'.format(track_part))
+            raise TypeError("Unrecognized TrackPart {}".format(track_part))
 
 
 class Cart:
@@ -81,30 +82,34 @@ class Cart:
         elif self.direction == CartDirection.RIGHT:
             self.x += 1
         else:
-            raise TypeError('Unrecognized CartDirection {}'.format(self.direction))
+            raise TypeError("Unrecognized CartDirection {}".format(self.direction))
 
     def do_turn(self, track_part):
-        self.direction = CartDirection.get_next_direction(self.direction, track_part, self.turn_count)
+        self.direction = CartDirection.get_next_direction(
+            self.direction, track_part, self.turn_count
+        )
         if track_part == TrackPart.INTER:
             self.turn_count += 1
 
     def __repr__(self):
-        return 'Cart: (position={}, direction={}, turns={})'.format((self.x, self.y), self.direction.name, self.turn_count)
+        return "Cart: (position={}, direction={}, turns={})".format(
+            (self.x, self.y), self.direction.name, self.turn_count
+        )
 
 
 class TrackPart(Enum):
-    EMPTY = ' '
-    HORIZ = '-'
-    VERT = '|'
-    BACK_TURN= '\\'
-    FWD_TURN = '/'
-    INTER = '+'
+    EMPTY = " "
+    HORIZ = "-"
+    VERT = "|"
+    BACK_TURN = "\\"
+    FWD_TURN = "/"
+    INTER = "+"
 
 
 def parse(f):
     carts = []
     track = []
-    lines = f.read().split('\n')[:-1]  # Cut off empty row at the end
+    lines = f.read().split("\n")[:-1]  # Cut off empty row at the end
 
     # Find the carts and replace with actual track pieces
     for y, line in enumerate(lines):
@@ -122,7 +127,7 @@ def parse(f):
 
 def print_track(track):
     for row in track:
-        print(''.join(part.value for part in row))
+        print("".join(part.value for part in row))
 
 
 def get_collision(carts):  # Return first collision found in list
@@ -132,7 +137,7 @@ def get_collision(carts):  # Return first collision found in list
         if loc in seen:
             return loc
         seen.add(loc)
-    return None   # No collision
+    return None  # No collision
 
 
 def run_until_first_collision(track, carts):
@@ -147,11 +152,11 @@ def run_until_first_collision(track, carts):
 
 
 def remove_collision(carts):  # 0 or 1 collisions
-    seen = {} # Map location to cart at that location
+    seen = {}  # Map location to cart at that location
     for cart in carts:
         loc = (cart.x, cart.y)
         if loc in seen:  # Remove both carts
-            print('Found collision at {}'.format(loc))
+            print("Found collision at {}".format(loc))
             carts.remove(seen[loc])
             carts.remove(cart)
             return
@@ -167,29 +172,31 @@ def run_until_last_collision(track, carts):
             remove_collision(carts)
     return carts[0].x, carts[0].y
 
+
 def part1Answer(f):
     track, carts = parse(f)
     collision = run_until_first_collision(track, carts)
     return collision
+
 
 def part2Answer(f):
     track, carts = parse(f)
     last_loc = run_until_last_collision(track, carts)
     return last_loc
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--test', action='store_true')
+    parser.add_argument("--test", action="store_true")
     args = parser.parse_args()
     if args.test:
-        FILE1 = 'test.txt'
-        FILE2 = 'test2.txt'
+        FILE1 = "test.txt"
+        FILE2 = "test2.txt"
     else:
-        FILE1 = FILE2 = 'input.txt'
+        FILE1 = FILE2 = "input.txt"
 
-    f = open(FILE1, 'rt')
+    f = open(FILE1, "rt")
     print("Part 1: {}".format(part1Answer(f)))
 
-    f = open(FILE2, 'rt')
+    f = open(FILE2, "rt")
     print("Part 2: {}".format(part2Answer(f)))
-

@@ -12,7 +12,12 @@ class Point(NamedTuple):
     y: int
 
     def neighbors(self) -> Set["Point"]:
-        return {Point(self.x+1, self.y), Point(self.x-1, self.y), Point(self.x, self.y+1), Point(self.x, self.y-1)}
+        return {
+            Point(self.x + 1, self.y),
+            Point(self.x - 1, self.y),
+            Point(self.x, self.y + 1),
+            Point(self.x, self.y - 1),
+        }
 
 
 @total_ordering
@@ -49,7 +54,7 @@ def parse_input(use_test_input: bool = False) -> Graph:
 
 
 def find_shortest_path(graph: Graph) -> Optional[WeightedPath]:
-    """ Implementation of Dijkstra's algorithm """
+    """Implementation of Dijkstra's algorithm"""
     # Initialize things
     start = Point(0, 0)
     dest = max(graph.keys())
@@ -70,9 +75,14 @@ def find_shortest_path(graph: Graph) -> Optional[WeightedPath]:
         path_to_current_point = tentative_paths[current_point]
         for neighbor in current_point.neighbors():
             if neighbor in graph and neighbor in unvisited_points:
-                proposed_path_to_neighbor = path_to_current_point.add(point=neighbor, weight=graph[neighbor])
+                proposed_path_to_neighbor = path_to_current_point.add(
+                    point=neighbor, weight=graph[neighbor]
+                )
                 existing_path_to_neighbor = tentative_paths.get(neighbor)
-                if not existing_path_to_neighbor or proposed_path_to_neighbor.weight < existing_path_to_neighbor.weight:
+                if (
+                    not existing_path_to_neighbor
+                    or proposed_path_to_neighbor.weight < existing_path_to_neighbor.weight
+                ):
                     tentative_paths[neighbor] = proposed_path_to_neighbor
                     path_queue.put(proposed_path_to_neighbor)
 

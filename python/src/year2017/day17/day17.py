@@ -6,6 +6,7 @@ def step(buf, num, current_index):
     buf.insert(current_index, num)
     return current_index
 
+
 def part1Answer():
     buf = [0]
     current_index = 0
@@ -13,6 +14,7 @@ def part1Answer():
         current_index = step(buf, i, current_index)
     index = (buf.index(2017) + 1) % len(buf)
     return buf[index]
+
 
 def part2Answer():
     current_index = 0
@@ -23,7 +25,7 @@ def part2Answer():
             answer_so_far = i
     return answer_so_far
 
+
 if __name__ == "__main__":
     print("Part 1: {}".format(part1Answer()))
     print("Part 2: {}".format(part2Answer()))
-

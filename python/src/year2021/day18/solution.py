@@ -38,7 +38,7 @@ def explode(expr: Expression, i: int) -> Expression:
     left_num = expr[i + 1]
     right_num = expr[i + 3]
     left_expr = expr[:i]
-    right_expr = expr[i + 5:]
+    right_expr = expr[i + 5 :]
     insert_expr = [0]
 
     # Add left num
@@ -64,7 +64,7 @@ def split(expr: Expression, i: int) -> Expression:
     # i is index of big number to be split
     num = expr[i]
     left_expr = expr[:i]
-    right_expr = expr[i+1:]
+    right_expr = expr[i + 1 :]
     insert_expr = ["[", num // 2, ",", (num + 1) // 2, "]"]
     return left_expr + insert_expr + right_expr
 
@@ -106,7 +106,7 @@ def decompose(expr: Expression) -> Tuple[Expression, Expression]:
             left_unbalance -= 1
 
         if left_unbalance == 1 and token == ",":
-            return expr[1:i], expr[i+1:-1]
+            return expr[1:i], expr[i + 1 : -1]
 
     raise RuntimeError(f"Could not decompose {expr}")
 

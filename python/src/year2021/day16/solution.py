@@ -10,7 +10,6 @@ Bitstream = List[bool]
 
 
 class Packet(ABC):
-
     def __init__(self, *, version: int, type_id: int):
         self.version = version
         self.type_id = type_id
@@ -25,7 +24,6 @@ class Packet(ABC):
 
 
 class LiteralPacket(Packet):
-
     def __init__(self, *, value: int, **kwargs):
         super().__init__(**kwargs)
         self.value = value
@@ -41,7 +39,6 @@ class LiteralPacket(Packet):
 
 
 class OperatorPacket(Packet):
-
     def __init__(self, *, operands: List[Packet], **kwargs):
         super().__init__(**kwargs)
         if not operands:
@@ -62,15 +59,21 @@ class OperatorPacket(Packet):
             return max(operand.eval() for operand in self.operands)
         elif self.type_id == 5:
             if len(self.operands) != 2:
-                raise ValueError(f"Cannot do operator {self.type_id} on {len(self.operands)} inputs")
+                raise ValueError(
+                    f"Cannot do operator {self.type_id} on {len(self.operands)} inputs"
+                )
             return 1 if self.operands[0].eval() > self.operands[1].eval() else 0
         elif self.type_id == 6:
             if len(self.operands) != 2:
-                raise ValueError(f"Cannot do operator {self.type_id} on {len(self.operands)} inputs")
+                raise ValueError(
+                    f"Cannot do operator {self.type_id} on {len(self.operands)} inputs"
+                )
             return 1 if self.operands[0].eval() < self.operands[1].eval() else 0
         elif self.type_id == 7:
             if len(self.operands) != 2:
-                raise ValueError(f"Cannot do operator {self.type_id} on {len(self.operands)} inputs")
+                raise ValueError(
+                    f"Cannot do operator {self.type_id} on {len(self.operands)} inputs"
+                )
             return 1 if self.operands[0].eval() == self.operands[1].eval() else 0
         else:
             raise ValueError(f"Unknown operator type_id = {self.type_id}")

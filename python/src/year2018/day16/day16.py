@@ -1,43 +1,62 @@
-OPERATIONS = ['addr', 'addi', 'mulr', 'muli', 'borr', 'bori', 'banr', 'bani',
-              'setr', 'seti', 'gtri', 'gtir', 'gtrr', 'eqri', 'eqir', 'eqrr']
+OPERATIONS = [
+    "addr",
+    "addi",
+    "mulr",
+    "muli",
+    "borr",
+    "bori",
+    "banr",
+    "bani",
+    "setr",
+    "seti",
+    "gtri",
+    "gtir",
+    "gtrr",
+    "eqri",
+    "eqir",
+    "eqrr",
+]
+
 
 def parse1(f):
-    lines = f.read().split('\n')
+    lines = f.read().split("\n")
     cases = []
-    for i in range(len(lines)/4):
-        before = eval(lines[4*i][8:])
-        inst = map(int, lines[4*i+1].split())
-        after = eval(lines[4*i+2][7:])
+    for i in range(len(lines) / 4):
+        before = eval(lines[4 * i][8:])
+        inst = map(int, lines[4 * i + 1].split())
+        after = eval(lines[4 * i + 2][7:])
         cases.append((inst, before, after))
     return cases
 
+
 def parse2(f):
-    lines = f.read().strip().split('\n')
+    lines = f.read().strip().split("\n")
     return [map(int, line.split()) for line in lines]
+
 
 def do_inst(inst, regs):
     regs = regs[:]
-    if inst[0][:3] in ('add', 'mul', 'bor', 'ban'):
+    if inst[0][:3] in ("add", "mul", "bor", "ban"):
         a = regs[inst[1]]
-        b = regs[inst[2]] if inst[0][3] == 'r' else inst[2]
-        if inst[0].startswith('add'):
+        b = regs[inst[2]] if inst[0][3] == "r" else inst[2]
+        if inst[0].startswith("add"):
             result = a + b
-        elif inst[0].startswith('mul'):
+        elif inst[0].startswith("mul"):
             result = a * b
-        elif inst[0].startswith('bor'):
+        elif inst[0].startswith("bor"):
             result = a | b
-        elif inst[0].startswith('ban'):
+        elif inst[0].startswith("ban"):
             result = a & b
 
-    elif inst[0].startswith('set'):
-        result = regs[inst[1]] if inst[0][3] == 'r' else inst[1]
+    elif inst[0].startswith("set"):
+        result = regs[inst[1]] if inst[0][3] == "r" else inst[1]
 
     else:
-        a = regs[inst[1]] if inst[0][2] == 'r' else inst[1]
-        b = regs[inst[2]] if inst[0][3] == 'r' else inst[2]
-        if inst[0].startswith('gt'):
+        a = regs[inst[1]] if inst[0][2] == "r" else inst[1]
+        b = regs[inst[2]] if inst[0][3] == "r" else inst[2]
+        if inst[0].startswith("gt"):
             result = int(a > b)
-        elif inst[0].startswith('eq'):
+        elif inst[0].startswith("eq"):
             result = int(a == b)
 
     regs[inst[3]] = result
@@ -53,6 +72,7 @@ def get_possibles(case):
         if regs == after:
             possibles.add(op)
     return possibles
+
 
 def part1Answer(f):
     cases = parse1(f)
@@ -83,8 +103,9 @@ def get_opcodes(cases):
                         other_possibles.remove(op)
     return opcodes
 
+
 def execute_program(raw_insts, opcodes):
-    regs = [0]*4
+    regs = [0] * 4
     for raw_inst in raw_insts:
         op = opcodes[raw_inst[0]]
         inst = [op] + raw_inst[1:]
@@ -95,10 +116,11 @@ def execute_program(raw_insts, opcodes):
 def part2Answer(f1, f2):
     cases = parse1(f1)
     opcodes = get_opcodes(cases)
-    print('Opcodes: {}'.format(opcodes))
+    print("Opcodes: {}".format(opcodes))
     raw_insts = parse2(f2)
     regs = execute_program(raw_insts, opcodes)
     return regs
+
 
 OPCODES = {
     0: None,
@@ -108,9 +130,8 @@ OPCODES = {
 }
 
 if __name__ == "__main__":
-    f1 = open('input1.txt', 'rt')
+    f1 = open("input1.txt", "rt")
     print("Part 1: {}".format(part1Answer(f1)))
     f1.seek(0)
-    f2 = open('input2.txt', 'rt')
+    f2 = open("input2.txt", "rt")
     print("Part 2: {}".format(part2Answer(f1, f2)))
-

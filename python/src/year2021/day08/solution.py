@@ -14,12 +14,18 @@ class Entry(NamedTuple):
     @classmethod
     def from_line(cls, line: str) -> "Entry":
         digit_signals_str, output_signals_str = line.strip().split(" | ")
-        digit_signals = {frozenset(signal_str) for signal_str in digit_signals_str.strip().split(" ")}
-        output_signals = [frozenset(signal_str) for signal_str in output_signals_str.strip().split(" ")]
+        digit_signals = {
+            frozenset(signal_str) for signal_str in digit_signals_str.strip().split(" ")
+        }
+        output_signals = [
+            frozenset(signal_str) for signal_str in output_signals_str.strip().split(" ")
+        ]
         return Entry(digit_signals=digit_signals, output_signals=output_signals)
 
 
-def deduce_digit(known_digits: Dict[str, DigitSignal], signals: Set[DigitSignal]) -> Tuple[str, DigitSignal]:
+def deduce_digit(
+    known_digits: Dict[str, DigitSignal], signals: Set[DigitSignal]
+) -> Tuple[str, DigitSignal]:
     for signal in signals:
         unique_count_signals = {2: "1", 3: "7", 4: "4", 7: "8"}
         if len(signal) in unique_count_signals:

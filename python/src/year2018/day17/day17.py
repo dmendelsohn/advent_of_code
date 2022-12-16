@@ -1,22 +1,24 @@
 import re
+
 SOURCE = (500, 0)
 
+
 def parse(f):
-    lines = f.read().strip().split('\n')
+    lines = f.read().strip().split("\n")
     walls = set()  # Set of tuples for all solid cells
     for line in lines:
-        PATTERN = '([xy])=([\d]+), ([xy])=([\d]+)..([\d]+)'
+        PATTERN = "([xy])=([\d]+), ([xy])=([\d]+)..([\d]+)"
         groups = re.search(PATTERN, line).groups()
         fixed = int(groups[1])
-        varied = range(int(groups[3]), int(groups[4])+1)
+        varied = range(int(groups[3]), int(groups[4]) + 1)
         for val in varied:
-            if groups[0] == 'x':
+            if groups[0] == "x":
                 walls.add((fixed, val))
             else:
                 walls.add((val, fixed))
 
-    cells = {w: '#' for w in walls}
-    cells[SOURCE] = '+'
+    cells = {w: "#" for w in walls}
+    cells[SOURCE] = "+"
 
     # Set up a helpful global var
     global MAXY
@@ -24,41 +26,45 @@ def parse(f):
 
     return cells
 
+
 def pretty_print(cells):
     minx = min(c[0] for c in cells)
     maxx = max(c[0] for c in cells)
     miny = min(c[1] for c in cells)
     maxy = max(c[1] for c in cells)
-    x_index = minx-1
+    x_index = minx - 1
 
     # Only print from minx-1 to maxx+1, and from 0 to maxy
-    grid = [['.' for x in range(maxx-minx+3)] for y in range(maxy+1)]
+    grid = [["." for x in range(maxx - minx + 3)] for y in range(maxy + 1)]
     for key, value in cells.items():
-        grid[key[1]][key[0]-x_index] = value
+        grid[key[1]][key[0] - x_index] = value
 
     settled = 0
     passed = 0
     walls = 0
     for row in grid:
-        print(''.join(row))
-        settled += row.count('~')
-        passed += row.count('|')
-        walls += row.count('#')
-    print('x_index: {}, Settled: {}, Passed: {}, Walls: {}\n'.format(x_index, settled, passed, walls))
+        print("".join(row))
+        settled += row.count("~")
+        passed += row.count("|")
+        walls += row.count("#")
+    print(
+        "x_index: {}, Settled: {}, Passed: {}, Walls: {}\n".format(x_index, settled, passed, walls)
+    )
 
 
 def count_reached(cells):
-    wall_y_vals = {key[1] for key in cells if cells[key] == '#'}
+    wall_y_vals = {key[1] for key in cells if cells[key] == "#"}
     miny = min(wall_y_vals)
     maxy = max(wall_y_vals)
     reached = 0
     for key, value in cells.items():
-        if miny <= key[1] <= maxy and value in ('~', '|', '+'):
+        if miny <= key[1] <= maxy and value in ("~", "|", "+"):
             reached += 1
     return reached
 
+
 def reach_cells(cells, loc, visited=None):
-    if cells.get(loc) in ('~', '#'):
+    if cells.get(loc) in ("~", "#"):
         return
 
     if loc[1] > MAXY:  # No need to go here
@@ -72,14 +78,16 @@ def reach_cells(cells, loc, visited=None):
     else:
         visited.add(loc)
         if loc not in cells:
-            cells[loc] = '|'
+            cells[loc] = "|"
         else:
-            assert cells[loc] == '|' or loc == SOURCE, 'loc={}, value={}'.format(loc, cells.get(loc))
+            assert cells[loc] == "|" or loc == SOURCE, "loc={}, value={}".format(
+                loc, cells.get(loc)
+            )
 
-    below = (loc[0], loc[1]+1)
-    if cells.get(below) in ('#', '~'):  # Something solid in the way, look left and right
-        reach_cells(cells, (loc[0]-1, loc[1]), visited)
-        reach_cells(cells, (loc[0]+1, loc[1]), visited)
+    below = (loc[0], loc[1] + 1)
+    if cells.get(below) in ("#", "~"):  # Something solid in the way, look left and right
+        reach_cells(cells, (loc[0] - 1, loc[1]), visited)
+        reach_cells(cells, (loc[0] + 1, loc[1]), visited)
     else:
         reach_cells(cells, below, visited)
 
@@ -88,11 +96,11 @@ def in_cup(cells, loc):
     for step in (-1, 1):  # Two directions
         next_loc = loc
         while True:  # Iterate until we hit wall or find hole
-            if cells.get(next_loc) == '#':  # Found the wall
+            if cells.get(next_loc) == "#":  # Found the wall
                 break
 
-            below = (next_loc[0], next_loc[1]+1)
-            if cells.get(below) not in ('#', '~'):  # Found the hole
+            below = (next_loc[0], next_loc[1] + 1)
+            if cells.get(below) not in ("#", "~"):  # Found the hole
                 return False
 
             next_loc = (next_loc[0] + step, next_loc[1])
@@ -105,31 +113,31 @@ def place_water(cells, loc):
     if loc[1] > MAXY:  # No need to go here
         return False
 
-    below = (loc[0], loc[1]+1)
-    left = (loc[0]-1, loc[1])
-    right = (loc[0]+1, loc[1])
-    if cells.get(below) not in ('~', '#'):  # Cell below is free
+    below = (loc[0], loc[1] + 1)
+    left = (loc[0] - 1, loc[1])
+    right = (loc[0] + 1, loc[1])
+    if cells.get(below) not in ("~", "#"):  # Cell below is free
         return place_water(cells, below)
 
-    if cells.get(left) not in ('~', '#'):  # Cell left is free
-        cells[loc] = '~'  # Prevent backwach
+    if cells.get(left) not in ("~", "#"):  # Cell left is free
+        cells[loc] = "~"  # Prevent backwach
         is_placed = place_water(cells, left)
-        cells[loc] = '|'  # Undo temporary mark
+        cells[loc] = "|"  # Undo temporary mark
         if is_placed:
             return True  # No need to continue
 
-    if cells.get(right) not in ('~', '#'):  # Cell right is free
-        cells[loc] = '~'
+    if cells.get(right) not in ("~", "#"):  # Cell right is free
+        cells[loc] = "~"
         is_placed = place_water(cells, right)
-        cells[loc] = '|'
+        cells[loc] = "|"
         if is_placed:
             return True  # No need to continue
 
     if in_cup(cells, loc):
-        cells[loc] = '~'
+        cells[loc] = "~"
         return True
 
-    return False   # Could not hold water here
+    return False  # Could not hold water here
 
 
 def add_water(cells):
@@ -148,7 +156,7 @@ def part1Answer(f):
     while add_water(cells):
         print(i)
         i += 1
-        #pretty_print(cells, False)
+        # pretty_print(cells, False)
         pass
     return count_reached(cells)
 
@@ -156,14 +164,15 @@ def part1Answer(f):
 def part2Answer(f):
     return 0
 
+
 import sys
+
 sys.setrecursionlimit(4000)
 if __name__ == "__main__":
-    f = open('input.txt', 'rt')
-    #import cProfile
-    #ans = cProfile.run('part1Answer(f)')
+    f = open("input.txt", "rt")
+    # import cProfile
+    # ans = cProfile.run('part1Answer(f)')
     ans = part1Answer(f)
     print("Part 1: {}".format(ans))
     f.seek(0)
     print("Part 2: {}".format(part2Answer(f)))
-

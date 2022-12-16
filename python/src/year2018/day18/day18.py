@@ -1,17 +1,18 @@
 def parse(f):
-    #return [list(line) for line in f.read().strip().split('\n')]
-    return f.read().strip().split('\n')
+    # return [list(line) for line in f.read().strip().split('\n')]
+    return f.read().strip().split("\n")
 
 
 def print_grid(grid):
-    print('')
+    print("")
     for row in grid:
-        print(''.join(row))
-    print('')
+        print("".join(row))
+    print("")
 
-OPEN = '.'
-TREE = '|'
-LUMBER = '#'
+
+OPEN = "."
+TREE = "|"
+LUMBER = "#"
 
 # Return open, tree, lumber surroundings
 def summarize_surroundings(grid, x, y):
@@ -48,7 +49,9 @@ def get_next_cell(grid, x, y):
 
 
 def get_next_grid(grid):
-    return [''.join([get_next_cell(grid, x, y) for x in range(len(grid[0]))]) for y in range(len(grid))]
+    return [
+        "".join([get_next_cell(grid, x, y) for x in range(len(grid[0]))]) for y in range(len(grid))
+    ]
 
 
 def get_score(grid):
@@ -71,6 +74,7 @@ def part1Answer(f):
         print_grid(grid)
     return get_score(grid)
 
+
 # 178856 is too low
 def part2Answer(f):
     grid = parse(f)
@@ -84,24 +88,23 @@ def part2Answer(f):
     i = 0
     while True:
         i += 1
-        key = '\n'.join(grid)
+        key = "\n".join(grid)
         if key in MEMO:
             grid = MEMO[key]
         else:
-            print('cache miss')
+            print("cache miss")
             grid = get_next_grid(grid)
             MEMO[key] = grid
 
         score = get_score(grid)
         print(i, score)
 
-
-        if i >= CYCLE_START and (NUM_ITERS - i)%CYCLE_LENGTH == 0:
+        if i >= CYCLE_START and (NUM_ITERS - i) % CYCLE_LENGTH == 0:
             return score
 
+
 if __name__ == "__main__":
-    f = open('input.txt', 'rt')
+    f = open("input.txt", "rt")
     print("Part 1: {}".format(part1Answer(f)))
     f.seek(0)
     print("Part 2: {}".format(part2Answer(f)))
-

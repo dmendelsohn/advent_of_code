@@ -2,7 +2,7 @@
 from collections import namedtuple
 
 
-class Point(namedtuple('Point', 'x y')):
+class Point(namedtuple("Point", "x y")):
     def __add__(self, other):
         return Point(self.x + other.x, self.y + other.y)
 
@@ -10,31 +10,33 @@ class Point(namedtuple('Point', 'x y')):
 def print_map(clay, flowing, still, x1=300, x2=700, y1=0, y2=1000):
     def char(p):
         if p == SPRING:
-            return '+'
+            return "+"
         elif p in clay:
-            return '#'
+            return "#"
         elif p in both:
-            return '$' # For water that is tagged as both flowing and still
+            return "$"  # For water that is tagged as both flowing and still
         elif p in still:
-            return '~'
+            return "~"
         elif p in flowing:
-            return '|'
+            return "|"
         else:
-            return '.'
+            return "."
 
     both = flowing & still
-    print('\n'.join(''.join(char(Point(x, y)) for x in range(x1, 1 + x2)) for y in range(y1, 1 + y2)))
+    print(
+        "\n".join("".join(char(Point(x, y)) for x in range(x1, 1 + x2)) for y in range(y1, 1 + y2))
+    )
 
 
 def simulate():
     clay = set()
-    with open('input.txt') as file:
+    with open("input.txt") as file:
         for line in file:
-            nums = list(map(int, ''.join(c if c.isnumeric() else ' ' for c in line).split()))
-            if line[0] == 'x':
+            nums = list(map(int, "".join(c if c.isnumeric() else " " for c in line).split()))
+            if line[0] == "x":
                 for y in range(nums[1], 1 + nums[2]):
                     clay.add(Point(nums[0], y))
-            elif line[0] == 'y':
+            elif line[0] == "y":
                 for x in range(nums[1], 1 + nums[2]):
                     clay.add(Point(x, nums[0]))
 
@@ -63,8 +65,8 @@ def simulate():
 
     # Output
     print_map(clay, flowing, still, y2=lowest_y)
-    print('Total Water = %d' % len([p for p in (flowing | still) if p.y >= highest_y]))
-    print('Still Water = %d' % len([p for p in still if p.y >= highest_y]))
+    print("Total Water = %d" % len([p for p in (flowing | still) if p.y >= highest_y]))
+    print("Still Water = %d" % len([p for p in still if p.y >= highest_y]))
 
 
 def fall(pos, ly, clay, flowing):
@@ -106,5 +108,5 @@ DOWN = Point(0, 1)
 LEFT = Point(-1, 0)
 RIGHT = Point(1, 0)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     simulate()

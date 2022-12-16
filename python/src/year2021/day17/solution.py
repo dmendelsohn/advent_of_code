@@ -57,8 +57,11 @@ def is_on_target_launch(target_box: TargetBox, launch: Vector) -> bool:
     pos = Vector(0, 0)
     vel = launch
     while True:
-        if target_box.min_x <= pos.x <= target_box.max_x and target_box.min_y <= pos.y <= target_box.max_y:
-            return True   # Hit the target
+        if (
+            target_box.min_x <= pos.x <= target_box.max_x
+            and target_box.min_y <= pos.y <= target_box.max_y
+        ):
+            return True  # Hit the target
         if pos.x > target_box.max_x or pos.y < target_box.min_y:
             return False  # Passed the target
         # Update position and velocity

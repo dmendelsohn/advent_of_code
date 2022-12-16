@@ -16,13 +16,13 @@ class Interval(NamedTuple):
     high: int
 
     def clamp(self, other: "Interval") -> Optional["Interval"]:
-        """ Return just the portion of this interval within the other interval """
+        """Return just the portion of this interval within the other interval"""
         low = max(self.low, other.low)
         high = min(self.high, other.high)
         return Interval(low, high) if low <= high else None
 
     def get_offcuts(self, other: "Interval") -> Set["Interval"]:
-        """ Cut away parts of this interval that don't overlap other """
+        """Cut away parts of this interval that don't overlap other"""
         offcuts = set()
         if self.low < other.low:
             offcuts.add(Interval(self.low, min(self.high, other.low - 1)))
@@ -40,7 +40,7 @@ class Box(NamedTuple):
     z_int: Interval
 
     def clamp(self, other: "Box") -> Optional["Box"]:
-        """ Return just the portion of this box within the other box """
+        """Return just the portion of this box within the other box"""
         x_int = self.x_int.clamp(other.x_int)
         y_int = self.y_int.clamp(other.y_int)
         z_int = self.z_int.clamp(other.z_int)
@@ -62,21 +62,29 @@ class Box(NamedTuple):
 
         # x off cuts
         offcut_ints = remaining.x_int.get_offcuts(other.x_int)
-        offcuts.update(Box(offcut_int, remaining.y_int, remaining.z_int) for offcut_int in offcut_ints)
+        offcuts.update(
+            Box(offcut_int, remaining.y_int, remaining.z_int) for offcut_int in offcut_ints
+        )
         remaining = Box(other.x_int, remaining.y_int, remaining.z_int)
 
         # y off cuts
         offcut_ints = remaining.y_int.get_offcuts(other.y_int)
-        offcuts.update(Box(remaining.x_int, offcut_int, remaining.z_int) for offcut_int in offcut_ints)
+        offcuts.update(
+            Box(remaining.x_int, offcut_int, remaining.z_int) for offcut_int in offcut_ints
+        )
         remaining = Box(remaining.x_int, other.y_int, remaining.z_int)
 
         # x off cuts
         offcut_ints = remaining.z_int.get_offcuts(other.z_int)
-        offcuts.update(Box(remaining.x_int, remaining.y_int, offcut_int) for offcut_int in offcut_ints)
+        offcuts.update(
+            Box(remaining.x_int, remaining.y_int, offcut_int) for offcut_int in offcut_ints
+        )
         remaining = Box(remaining.x_int, remaining.y_int, other.z_int)
 
         if remaining != other:
-            raise RuntimeError(f"Offcuts did not leave us with other\nremaining={remaining}\nother={other}")
+            raise RuntimeError(
+                f"Offcuts did not leave us with other\nremaining={remaining}\nother={other}"
+            )
 
         return offcuts
 
@@ -103,7 +111,7 @@ def get_on_boxes_after_step(on_boxes: Set[Box], step: RebootStep) -> Set[Box]:
 
 
 def apply_steps(steps: List[RebootStep]) -> Set[Box]:
-    """ Return the on-boxes """
+    """Return the on-boxes"""
     on_boxes = set()
     for step in steps:
         on_boxes = get_on_boxes_after_step(on_boxes, step)
@@ -122,7 +130,7 @@ def parse_spec(spec: str) -> Interval:
 
 def parse_step(line: str) -> RebootStep:
     inst, coords = line.split(" ")
-    state = (inst == "on")
+    state = inst == "on"
     x_int, y_int, z_int = [parse_spec(spec) for spec in coords.split(",")]
     box = Box(x_int, y_int, z_int)
     return RebootStep(state, box)

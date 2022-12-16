@@ -16,7 +16,6 @@ class FoldInstruction(NamedTuple):
     fold_line: int
 
 
-
 def read_input(use_test_input: bool = False) -> str:
     input_path = TEST_INPUT_PATH if use_test_input else INPUT_PATH
     return open(input_path).read().strip()

@@ -3,7 +3,7 @@ from typing import Dict, List
 
 INPUT_PATH = Path(__file__).parent / "input.txt"
 
-School = Dict[int, int]   # Dict values are num fish with counter=key
+School = Dict[int, int]  # Dict values are num fish with counter=key
 
 
 def parse_input() -> List[int]:
@@ -31,7 +31,6 @@ def iterate_school(old_school: School) -> School:
 
 def school_size(school: School) -> int:
     return sum(school.values())
-
 
 
 def simulate_school(school: School, num_iterations: int) -> int:

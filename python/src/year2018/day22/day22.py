@@ -1,14 +1,14 @@
 DEPTH = 5616
-TARGET = 10,785
+TARGET = 10, 785
 MODULO = 20183
 
 ## TEST VALUES
-#DEPTH = 510
-#TARGET = 10, 10
+# DEPTH = 510
+# TARGET = 10, 10
 
-ROCKY = '.'
-WET = '='
-NARROW = '|'
+ROCKY = "."
+WET = "="
+NARROW = "|"
 
 
 def get_danger_level(t):
@@ -22,29 +22,30 @@ def get_danger_level(t):
 
 def get_type(geo_index):
     erosion = (geo_index + DEPTH) % MODULO
-    if erosion%3 == 0:
+    if erosion % 3 == 0:
         return ROCKY
-    elif erosion%3 == 1:
+    elif erosion % 3 == 1:
         return WET
     else:
         return NARROW
 
 
 def get_geo_index(x, y, memo):
-    if (x,y) in memo:
-        return memo[(x,y)]
+    if (x, y) in memo:
+        return memo[(x, y)]
 
-    if (x,y) == (0,0) or (x,y) == TARGET:
+    if (x, y) == (0, 0) or (x, y) == TARGET:
         index = 0
     elif x == 0:
         index = y * 48271
     elif y == 0:
         index = x * 16807
     else:
-        index = (get_geo_index(x-1, y, memo) + DEPTH) * (get_geo_index(x, y-1, memo) + DEPTH)
+        index = (get_geo_index(x - 1, y, memo) + DEPTH) * (get_geo_index(x, y - 1, memo) + DEPTH)
     index = index % MODULO
-    memo[(x,y)] = index
+    memo[(x, y)] = index
     return index
+
 
 def get_region(x, y, memo):
     return get_type(get_geo_index(x, y, memo))
@@ -54,20 +55,18 @@ def get_region(x, y, memo):
 def part1Answer(f):
     total = 0
     memo = {}
-    for x in range(0, TARGET[0]+1):
-        for y in range(0, TARGET[1]+1):
+    for x in range(0, TARGET[0] + 1):
+        for y in range(0, TARGET[1] + 1):
             index = get_geo_index(x, y, memo)
             t = get_type(index)
             danger = get_danger_level(t)
             total += danger
-            #print('({},{}): geo_index={}, type={}'.format(x, y, index, t))
+            # print('({},{}): geo_index={}, type={}'.format(x, y, index, t))
     return total
 
-ALLOWED = {
-    ROCKY: ('T', 'C'),
-    WET: ('C', 'N'),
-    NARROW: ('T', 'N')
-}
+
+ALLOWED = {ROCKY: ("T", "C"), WET: ("C", "N"), NARROW: ("T", "N")}
+
 
 def get_neighbors(current, memo):
     # Return set of (node, distance) tuples for each neighbor
@@ -76,7 +75,7 @@ def get_neighbors(current, memo):
     neighbors = set()
 
     # First the "change gear" neighbor
-    for next_gear in 'TCN':
+    for next_gear in "TCN":
         if next_gear in ALLOWED[region] and next_gear != gear:
             neighbor = (x, y, next_gear)
             neighbors.add((neighbor, 7))
@@ -96,7 +95,6 @@ def get_neighbors(current, memo):
     return neighbors
 
 
-
 def part2Answer(f):
     memo = {}
 
@@ -104,8 +102,8 @@ def part2Answer(f):
     distances = {}  # Keep track of distances so far, only finalized once a node is visited
     unvisited = set()  # Seen as a neighbor, not yet visited
     visited = set()
-    current = (0, 0, 'T')  # There's T (torch), C (climbing), N (neither)
-    STOP = (TARGET[0], TARGET[1], 'T')
+    current = (0, 0, "T")  # There's T (torch), C (climbing), N (neither)
+    STOP = (TARGET[0], TARGET[1], "T")
 
     distances[current] = 0
     unvisited.add(current)
@@ -116,7 +114,7 @@ def part2Answer(f):
 
             unvisited.add(neighbor)
             new_distance = distances[current] + distance
-            if distances.get(neighbor, float('inf')) > new_distance:  # Found a shorter path
+            if distances.get(neighbor, float("inf")) > new_distance:  # Found a shorter path
                 distances[neighbor] = new_distance
 
         visited.add(current)
@@ -124,15 +122,16 @@ def part2Answer(f):
         # print('Visiting: {}, Heuristic: {}'.format(current, heur))
         unvisited.remove(current)
         # Should do a priority queue for unvisited but I don't feel like it right now
-        current = min(unvisited, key = lambda x: distances[x] + abs(TARGET[0] - x[0]) + abs(TARGET[1] - x[1]))
+        current = min(
+            unvisited, key=lambda x: distances[x] + abs(TARGET[0] - x[0]) + abs(TARGET[1] - x[1])
+        )
 
-    #print(distances)
+    # print(distances)
     return distances[STOP]
 
 
 if __name__ == "__main__":
-    f = open('input.txt', 'rt')
+    f = open("input.txt", "rt")
     print("Part 1: {}".format(part1Answer(f)))
     f.seek(0)
     print("Part 2: {}".format(part2Answer(f)))
-

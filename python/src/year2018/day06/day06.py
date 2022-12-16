@@ -1,11 +1,13 @@
 import copy
 
+
 def get_bounding_box(coords):
     minx = min(c[0] for c in coords)
     miny = min(c[1] for c in coords)
     maxx = max(c[0] for c in coords)
     maxy = max(c[1] for c in coords)
     return (minx, miny, maxx, maxy)
+
 
 DIRS = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
@@ -27,7 +29,9 @@ def next_grid(grid):
                         pass  # Neighbor is empty, move on to next one
                     elif next_val == -1:
                         resolved_next_val = -1  # Neighbor is a tie, so we resolved to a tie
-                    elif next_val == resolved_next_val:  # Neighbor is already what we're planning to set to
+                    elif (
+                        next_val == resolved_next_val
+                    ):  # Neighbor is already what we're planning to set to
                         pass
                     # At this point, we've found a new claimant
                     elif resolved_next_val is None:  # Unclaimed!
@@ -48,19 +52,20 @@ def is_done(grid):
 
 def get_grid(coords):
     minx, miny, maxx, maxy = get_bounding_box(coords)
-    grid = [[None for x in range(minx, maxx+1)] for y in range(miny, maxy+1)]
+    grid = [[None for x in range(minx, maxx + 1)] for y in range(miny, maxy + 1)]
     # grid = {(x,y): None for x in range(minx, maxx+1) for y in range(miny, maxy+1)}
     for i, coord in enumerate(coords):
-        #grid[coord] = i  # Seed the grid
+        # grid[coord] = i  # Seed the grid
         x, y = coord
-        grid[y-miny][x-minx] = i  # Seed the grid
+        grid[y - miny][x - minx] = i  # Seed the grid
     return grid
+
 
 # Get set of numbers that appear on the perimeter
 def get_infinite_claims(grid):
     result = set()
     result.update(grid[0])  # Add top row
-    result.update(grid[-1]) # Add bottom row
+    result.update(grid[-1])  # Add bottom row
     result.update(grid[y][0] for y in range(len(grid)))  # Left
     result.update(grid[y][-1] for y in range(len(grid)))  # Right
     return result
@@ -73,26 +78,29 @@ def get_freqs(grid):
             freqs[elt] = freqs.get(elt, 0) + 1
     return freqs
 
+
 def print_grid(grid):
-    chars = list('GRID:\n')
+    chars = list("GRID:\n")
     for row in grid:
         for elt in row:
             if elt is None:
-                chars.append(' ')
+                chars.append(" ")
             elif elt == -1:
-                chars.append('.')
+                chars.append(".")
             else:
-                chars.append(chr(65+elt))
-        chars.append('\n')
-    print(''.join(chars))
+                chars.append(chr(65 + elt))
+        chars.append("\n")
+    print("".join(chars))
+
 
 def parse(f):
-    lines = f.read().strip().split('\n')
+    lines = f.read().strip().split("\n")
     coords = []
     for line in lines:
-        parts = line.split(', ')
+        parts = line.split(", ")
         coords.append((int(parts[0]), int(parts[1])))
     return coords
+
 
 def part1Answer(f):
     coords = parse(f)
@@ -112,7 +120,8 @@ def part1Answer(f):
 
 
 MAX_COST = 32  # Test
-MAX_COST = 10000 # For real
+MAX_COST = 10000  # For real
+
 
 def get_cost_of_value(locs, val):
     cost = 0
@@ -123,7 +132,7 @@ def get_cost_of_value(locs, val):
 
 def get_cost_lookup(locs):  # Just one dimenion
     locs = sorted(locs)
-    median = locs[len(locs)/2]
+    median = locs[len(locs) / 2]
     lut = {}
     i = median
     for offset in (-1, 1):
@@ -152,8 +161,7 @@ def part2Answer(f):
 
 
 if __name__ == "__main__":
-    f = open('input.txt', 'rt')
-    #print("Part 1: {}".format(part1Answer(f)))
+    f = open("input.txt", "rt")
+    # print("Part 1: {}".format(part1Answer(f)))
     f.seek(0)
     print("Part 2: {}".format(part2Answer(f)))
-

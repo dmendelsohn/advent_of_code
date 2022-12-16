@@ -8,7 +8,7 @@ Room = Tuple[str, ...]  # Length 4
 
 
 class State(NamedTuple):
-    hallway: Tuple[str, ...]   # Length 11
+    hallway: Tuple[str, ...]  # Length 11
     a_room: Room
     b_room: Room
     c_room: Room
@@ -60,7 +60,7 @@ def get_dest_state() -> State:
 
 
 def get_pushed_room(room: Room, home_char: str) -> Optional[Tuple[Room, int]]:
-    """ Get the resulting room and dist of entering from the hallway (or None if impossible)"""
+    """Get the resulting room and dist of entering from the hallway (or None if impossible)"""
     room = list(room)
     for i in range(3, -1, -1):
         if not room[i]:  # Found the lowest open spot
@@ -72,7 +72,7 @@ def get_pushed_room(room: Room, home_char: str) -> Optional[Tuple[Room, int]]:
 
 
 def get_popped_room(room: Room) -> Tuple[Room, str, int]:
-    """ Pop top element out of room, return resulting room, popped char, and dist of exit """
+    """Pop top element out of room, return resulting room, popped char, and dist of exit"""
     room = list(room)
     for i in range(4):
         if room[i]:  # Found the spot to pop
@@ -83,12 +83,14 @@ def get_popped_room(room: Room) -> Tuple[Room, str, int]:
 
 def dist_to_reach_room(state: State, room_char: str, from_idx: int) -> Optional[int]:
     room_loc = ROOM_LOCS[room_char]
-    is_passable = not any(state.hallway[i] for i in range(min(room_loc, from_idx) + 1, max(room_loc, from_idx)))
+    is_passable = not any(
+        state.hallway[i] for i in range(min(room_loc, from_idx) + 1, max(room_loc, from_idx))
+    )
     return abs(room_loc - from_idx) if is_passable else None
 
 
 def enter_neighbors(state: State) -> Dict[State, int]:
-    """ All valid moves where a entity is entering a room """
+    """All valid moves where a entity is entering a room"""
     output = dict()
     for hall_idx, char in enumerate(state.hallway):
         # Check if there is an entity here
@@ -109,7 +111,11 @@ def enter_neighbors(state: State) -> Dict[State, int]:
         cost = (hallway_dist + entry_dist) * CHAR_COST[char]
         new_hallway = list(state.hallway)
         new_hallway[hall_idx] = ""
-        new_state_dict = {**state._asdict(), "hallway": tuple(new_hallway), f"{char.lower()}_room": new_room}
+        new_state_dict = {
+            **state._asdict(),
+            "hallway": tuple(new_hallway),
+            f"{char.lower()}_room": new_room,
+        }
         output[State(**new_state_dict)] = cost
     return output
 
@@ -138,7 +144,7 @@ def get_available_hallway_locs(hallway: Tuple[str, ...], start_idx: int) -> Set[
 
 
 def exit_neighbors(state: State) -> Dict[State, int]:
-    """ All valid moves where a entity is exiting a room """
+    """All valid moves where a entity is exiting a room"""
     output = dict()
     for room_char in "ABCD":
         room_attr = f"{room_char.lower()}_room"
@@ -168,7 +174,7 @@ def get_neighbors(state: State) -> Dict[State, int]:  # Neighbor states and the 
 
 
 def find_min_cost(start: State) -> Optional[int]:
-    """ Implementation of Dijkstra's algorithm """
+    """Implementation of Dijkstra's algorithm"""
     # Initialize things
     dest = get_dest_state()
     min_cost_per_state: Dict[State, int] = {start: 0}

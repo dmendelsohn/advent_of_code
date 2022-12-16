@@ -3,6 +3,7 @@ from typing import List, NamedTuple
 
 INPUT_PATH = Path(__file__).parent / "input.txt"
 
+
 class Command(NamedTuple):
     direction: str
     distance: int

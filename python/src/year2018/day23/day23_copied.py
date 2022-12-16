@@ -2,6 +2,7 @@
 
 import re
 
+
 def get_bots(values):
     r = re.compile("pos=<([0-9-]+),([0-9-]+),([0-9-]+)>, r=([0-9]+)")
     bots = []
@@ -41,9 +42,9 @@ def calc(values):
 def find(done, bots, xs, ys, zs, dist, ox, oy, oz, forced_count):
     at_target = []
 
-    for x in range(min(xs), max(xs)+1, dist):
-        for y in range(min(ys), max(ys)+1, dist):
-            for z in range(min(zs), max(zs)+1, dist):
+    for x in range(min(xs), max(xs) + 1, dist):
+        for y in range(min(ys), max(ys) + 1, dist):
+            for z in range(min(zs), max(zs) + 1, dist):
 
                 # See how many bots are possible
                 count = 0
@@ -53,12 +54,12 @@ def find(done, bots, xs, ys, zs, dist, ox, oy, oz, forced_count):
                         if calc <= bdist:
                             count += 1
                     else:
-                        calc =  abs((ox+x) - (ox+bx))
-                        calc += abs((oy+y) - (oy+by))
-                        calc += abs((oz+z) - (oz+bz))
-                        # The minus three is to include the current box 
+                        calc = abs((ox + x) - (ox + bx))
+                        calc += abs((oy + y) - (oy + by))
+                        calc += abs((oz + z) - (oz + bz))
+                        # The minus three is to include the current box
                         # in any bots that are near it
-                        if calc //dist - 3 <= (bdist) // dist:
+                        if calc // dist - 3 <= (bdist) // dist:
                             count += 1
 
                 if count >= forced_count:
@@ -79,9 +80,9 @@ def find(done, bots, xs, ys, zs, dist, ox, oy, oz, forced_count):
             return best[4], best[3]
         else:
             # Search in the sub boxes, see if we find any matches
-            xs = [best[0], best[0] + dist//2]
-            ys = [best[1], best[1] + dist//2]
-            zs = [best[2], best[2] + dist//2]
+            xs = [best[0], best[0] + dist // 2]
+            ys = [best[1], best[1] + dist // 2]
+            zs = [best[2], best[2] + dist // 2]
             a, b = find(done, bots, xs, ys, zs, dist // 2, ox, oy, oz, forced_count)
             if a is None:
                 # This is a false path, remove it from consideration and try any others
@@ -151,6 +152,7 @@ def run(values):
     print("Nearest the big bot: " + str(calc(values)))
     print("Best location value: " + str(calc2(values)))
 
-if __name__ == '__main__':
-    values = open('input.txt', 'rt').read().strip().split('\n')
+
+if __name__ == "__main__":
+    values = open("input.txt", "rt").read().strip().split("\n")
     run(values)

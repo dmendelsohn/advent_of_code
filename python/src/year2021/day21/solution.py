@@ -82,7 +82,9 @@ class GameResult(NamedTuple):
     off_player_wins: int
 
     def __add__(self, other: "GameResult") -> "GameResult":
-        return GameResult(self.on_player_wins + other.on_player_wins, self.off_player_wins + other.off_player_wins)
+        return GameResult(
+            self.on_player_wins + other.on_player_wins, self.off_player_wins + other.off_player_wins
+        )
 
     def __mul__(self, other: int) -> "GameResult":
         return GameResult(other * self.on_player_wins, other * self.off_player_wins)
@@ -125,7 +127,9 @@ def get_game_result(game_state: GameState, memo: Dict[GameState, GameResult]) ->
 def part_2(use_test_input: bool = False) -> str:
     p1_pos, p2_pos = get_starting_points(use_test_input)
     target = 21
-    game_state = GameState(PlayerState(pos=p1_pos, points_to_win=target), PlayerState(pos=p2_pos, points_to_win=target))
+    game_state = GameState(
+        PlayerState(pos=p1_pos, points_to_win=target), PlayerState(pos=p2_pos, points_to_win=target)
+    )
     memo = dict()
     game_result = get_game_result(game_state, memo)
     print(f"Game result: {game_result}")

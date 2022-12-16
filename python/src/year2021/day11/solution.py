@@ -50,7 +50,7 @@ def reset_flashes(grid: List[List[Octopus]]) -> None:
 
 
 def do_step(grid: List[List[Octopus]]) -> int:
-    """ Modifies the grid and returns total number of flashes """
+    """Modifies the grid and returns total number of flashes"""
     num_flashes = 0
     for row in range(len(grid)):
         for col in range(len(grid[0])):

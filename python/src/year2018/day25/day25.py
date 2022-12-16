@@ -1,7 +1,8 @@
 from collections import namedtuple
 import itertools
 
-class Point(namedtuple('Point', ['x', 'y', 'z', 't'])):
+
+class Point(namedtuple("Point", ["x", "y", "z", "t"])):
     def __add__(self, other):
         return Point(self.x + other.x, self.y + other.y, self.z + other.z, self.t + other.t)
 
@@ -9,18 +10,21 @@ class Point(namedtuple('Point', ['x', 'y', 'z', 't'])):
     def magnitude(self):
         return abs(self.x) + abs(self.y) + abs(self.z) + abs(self.t)
 
+
 def parse(f):
-    return [Point(*map(int, line.split(','))) for line in f.read().strip().split('\n')]
+    return [Point(*map(int, line.split(","))) for line in f.read().strip().split("\n")]
+
 
 OFFSETS = set()
-for x in itertools.product(*[range(-3, 4)]*4):
+for x in itertools.product(*[range(-3, 4)] * 4):
     p = Point(*x)
-    if p.magnitude <= 3:          
+    if p.magnitude <= 3:
         OFFSETS.add(p)
-OFFSETS.remove(Point(0,0,0,0))
+OFFSETS.remove(Point(0, 0, 0, 0))
+
 
 def get_neighbors(points, point):
-    return {point+offset for offset in OFFSETS if point+offset in points}
+    return {point + offset for offset in OFFSETS if point + offset in points}
 
 
 def get_constellation(points, point, visited):  # Get constallation that includes point
@@ -50,12 +54,13 @@ def part1Answer(f):
     points = parse(f)
     return get_constellations(points)
 
+
 def part2Answer(f):
     return 0
 
+
 if __name__ == "__main__":
-    f = open('input.txt', 'rt')
+    f = open("input.txt", "rt")
     print("Part 1: {}".format(part1Answer(f)))
     f.seek(0)
     print("Part 2: {}".format(part2Answer(f)))
-

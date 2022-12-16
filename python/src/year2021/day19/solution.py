@@ -21,7 +21,14 @@ def get_rotations() -> List[Rotation]:
     x_90 = np.array([[1, 0, 0], [0, 0, 1], [0, -1, 0]])
     y_90 = np.array([[0, 0, -1], [0, 1, 0], [1, 0, 0]])
     z_90 = np.array([[0, 1, 0], [-1, 0, 0], [0, 0, 1]])
-    face_rots = [eye, x_90, matrix_power(x_90, 2), matrix_power(x_90, 3), y_90, matrix_power(y_90, 3)]
+    face_rots = [
+        eye,
+        x_90,
+        matrix_power(x_90, 2),
+        matrix_power(x_90, 3),
+        y_90,
+        matrix_power(y_90, 3),
+    ]
     orientation_rots = [eye, z_90, matrix_power(z_90, 2), matrix_power(z_90, 3)]
     rotations = []
     for f in face_rots:
@@ -45,12 +52,14 @@ def count_overlap(first: ReadingSet, second: ReadingSet) -> int:
 
 
 def merge_reading_sets(reading_sets: Iterable[ReadingSet]) -> ReadingSet:
-    """ Combine the input reading sets, deduplicated overlapping points """
+    """Combine the input reading sets, deduplicated overlapping points"""
     stacked = np.vstack(list(reading_sets))
     return np.unique(stacked, axis=0)
 
 
-def align_reading_set(this: ReadingSet, ref: ReadingSet) -> Optional[Tuple[ReadingSet, Rotation, Translation]]:
+def align_reading_set(
+    this: ReadingSet, ref: ReadingSet
+) -> Optional[Tuple[ReadingSet, Rotation, Translation]]:
     """
     Try rotation and translations of this reading set to see if we can get 12-point overlap with the ref reading set
     If so, return a merged reading set with the entire ref set and the rotated + aligned version of this set
@@ -66,7 +75,9 @@ def align_reading_set(this: ReadingSet, ref: ReadingSet) -> Optional[Tuple[Readi
     return None
 
 
-def align_reading_set_translate(this: ReadingSet, ref: ReadingSet) -> Optional[Tuple[ReadingSet, Translation]]:
+def align_reading_set_translate(
+    this: ReadingSet, ref: ReadingSet
+) -> Optional[Tuple[ReadingSet, Translation]]:
     """
     Try just translations of this reading set to see if we can get 12-point overlap with the ref reading set
     If so, return a copy of this reading set translated into the other reading set's frame
@@ -76,7 +87,9 @@ def align_reading_set_translate(this: ReadingSet, ref: ReadingSet) -> Optional[T
     for this_row_idx in range(len(this)):
         for ref_row_idx in range(len(ref)):
             # Translate `this` so that the selected row in `this` matches the selected for in `ref`
-            translation = ref[ref_row_idx: ref_row_idx + 1, :] - this[this_row_idx: this_row_idx + 1, :]
+            translation = (
+                ref[ref_row_idx : ref_row_idx + 1, :] - this[this_row_idx : this_row_idx + 1, :]
+            )
             translated_this = translate_reading_set(this, translation)
 
             # If we find 12 overlapping points, we're done
@@ -86,8 +99,10 @@ def align_reading_set_translate(this: ReadingSet, ref: ReadingSet) -> Optional[T
     return None
 
 
-def align_all_reading_sets(scanner_to_reading_set: Dict[int, ReadingSet], start_ref_scanner: int) -> Dict[int, Vector]:
-    """ Updates scanner_to_reading_set input in place, and returns scanner locations """
+def align_all_reading_sets(
+    scanner_to_reading_set: Dict[int, ReadingSet], start_ref_scanner: int
+) -> Dict[int, Vector]:
+    """Updates scanner_to_reading_set input in place, and returns scanner locations"""
     aligned_scanners = {start_ref_scanner}
     align_to_queue = [start_ref_scanner]
     scanner_locations = {start_ref_scanner: np.zeros((3,), dtype=int)}
@@ -108,7 +123,9 @@ def align_all_reading_sets(scanner_to_reading_set: Dict[int, ReadingSet], start_
                 scanner_to_reading_set[unaligned_scanner] = aligned_reading_set
                 aligned_scanners.add(unaligned_scanner)
                 align_to_queue.append(unaligned_scanner)
-                scanner_locations[unaligned_scanner] = np.matmul(np.zeros((3,), dtype=int), rotation) + translation
+                scanner_locations[unaligned_scanner] = (
+                    np.matmul(np.zeros((3,), dtype=int), rotation) + translation
+                )
 
     unaligned_scanners = set(scanner_to_reading_set.keys()) - aligned_scanners
     if unaligned_scanners:
@@ -123,7 +140,7 @@ def read_input(use_test_input: bool = False) -> str:
 
 
 def parse_input(use_test_input: bool = False) -> Dict[int, ReadingSet]:
-    """ Return mapping from scanner number to ReadingSet """
+    """Return mapping from scanner number to ReadingSet"""
     raw_input = read_input(use_test_input)
     scanner_to_reading_set = dict()
     current_scanner = None

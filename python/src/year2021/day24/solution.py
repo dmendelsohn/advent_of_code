@@ -27,7 +27,7 @@ FRAMES = [
 def run_step(w: int, z: int, frame: Frame) -> int:
     z_mod = z % 26
     if frame.a <= 0:
-        z = int(z/26),
+        z = (int(z / 26),)
     if w != (frame.a + z_mod):
         z = z * 26 + (w + frame.b)
     return z
@@ -58,10 +58,14 @@ def get_max_valid_num() -> str:
 
 
 def part_1(use_test_input: bool = False) -> str:
-    print("Help from https://github.com/dphilipson/advent-of-code-2021/blob/master/src/days/day24.rs and hand-solved")
+    print(
+        "Help from https://github.com/dphilipson/advent-of-code-2021/blob/master/src/days/day24.rs and hand-solved"
+    )
     return str(92967699949891)
 
 
 def part_2(use_test_input: bool = False) -> str:
-    print("Help from https://github.com/dphilipson/advent-of-code-2021/blob/master/src/days/day24.rs and hand-solved")
+    print(
+        "Help from https://github.com/dphilipson/advent-of-code-2021/blob/master/src/days/day24.rs and hand-solved"
+    )
     return str(91411143612181)

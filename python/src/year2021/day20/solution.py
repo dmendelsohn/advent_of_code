@@ -33,7 +33,7 @@ class Board(NamedTuple):
 
     @property
     def bounding_box(self) -> Box:
-        """ Bounding box includes a border of width one """
+        """Bounding box includes a border of width one"""
         x_min = min(p.x for p in self.points) - 1
         x_max = max(p.x for p in self.points) + 1
         y_min = min(p.y for p in self.points) - 1
@@ -53,7 +53,8 @@ class Board(NamedTuple):
         for y in range(box.y_min, box.y_max + 1):
             present_char, absent_char = (".", "#") if self.background_state else ("#", ".")
             line = "".join(
-                present_char if Point(x, y) in self.points else absent_char for x in range(box.x_min, box.x_max + 1)
+                present_char if Point(x, y) in self.points else absent_char
+                for x in range(box.x_min, box.x_max + 1)
             )
             lines.append(line)
         lines.append(f"Background is {'#' if self.background_state else '.'}")
@@ -66,7 +67,11 @@ def get_pattern_index(board: Board, point: Point) -> int:
     binary_str = ""
     for y in range(point.y - 1, point.y + 2):
         for x in range(point.x - 1, point.x + 2):
-            state = board.background_state if Point(x, y) not in board.points else not board.background_state
+            state = (
+                board.background_state
+                if Point(x, y) not in board.points
+                else not board.background_state
+            )
             binary_str += str(int(state))
     return int(binary_str, 2)
 

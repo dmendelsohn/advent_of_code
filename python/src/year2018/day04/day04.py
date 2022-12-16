@@ -2,27 +2,29 @@ import re
 from collections import namedtuple
 from datetime import datetime
 
-Event = namedtuple('Event', ['datetime', 'text'])
-#[1518-06-07 00:03] Guard #1619 begins shift
-#[1518-09-02 00:15] falls asleep
-#[1518-04-26 00:48] wakes up
+Event = namedtuple("Event", ["datetime", "text"])
+# [1518-06-07 00:03] Guard #1619 begins shift
+# [1518-09-02 00:15] falls asleep
+# [1518-04-26 00:48] wakes up
+
 
 def parse_line(line):
-    PATTERN = '\[([0-9]{4}.*)\] (.*)'
+    PATTERN = "\[([0-9]{4}.*)\] (.*)"
     groups = re.search(PATTERN, line).groups()
-    time = datetime.strptime(groups[0], '%Y-%m-%d %H:%M')
+    time = datetime.strptime(groups[0], "%Y-%m-%d %H:%M")
     return time, groups[1]
 
+
 def parse(f):
-    lines = sorted(map(parse_line, f.read().strip().split('\n')))
+    lines = sorted(map(parse_line, f.read().strip().split("\n")))
     naps = []
     for time, text in lines:
-        if text.startswith('Guard'):
-            PATTERN = 'Guard #([0-9]+) begins shift'
+        if text.startswith("Guard"):
+            PATTERN = "Guard #([0-9]+) begins shift"
             guard = int(re.search(PATTERN, text).groups()[0])
-        elif text.startswith('falls'):
+        elif text.startswith("falls"):
             nap_start = time.minute
-        elif text.startswith('wakes'):
+        elif text.startswith("wakes"):
             nap_end = time.minute
             naps.append((guard, nap_start, nap_end))
     return naps
@@ -65,9 +67,9 @@ def part2Answer(f):
     guard, minute = ordered_freqs[0][0]
     return guard * minute
 
+
 if __name__ == "__main__":
-    f = open('input.txt', 'rt')
+    f = open("input.txt", "rt")
     print("Part 1: {}".format(part1Answer(f)))
     f.seek(0)
     print("Part 2: {}".format(part2Answer(f)))
-

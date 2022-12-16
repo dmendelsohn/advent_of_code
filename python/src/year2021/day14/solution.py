@@ -24,7 +24,7 @@ def apply_rules(seq: List[str], rule_map: InsertionMap) -> List[str]:
     next_seq = []
     for i in range(len(seq) - 1):
         next_seq.append(seq[i])
-        insert_char = rule_map.get((seq[i], seq[i+1]))
+        insert_char = rule_map.get((seq[i], seq[i + 1]))
         if insert_char:
             next_seq.append(insert_char)
     next_seq.append(seq[-1])
@@ -44,13 +44,13 @@ def part_1(use_test_input: bool = False) -> str:
     return f"{score}"
 
 
-DigramCount = Dict[Tuple[str, str] ,int]
+DigramCount = Dict[Tuple[str, str], int]
 
 
 def get_digram_count(seq: str) -> DigramCount:
     digram_count = defaultdict(int)
     for i in range(len(seq) - 1):
-        digram_count[(seq[i], seq[i+1])] += 1
+        digram_count[(seq[i], seq[i + 1])] += 1
     return dict(digram_count)
 
 
@@ -66,7 +66,9 @@ def apply_rules_digram(digram_count: DigramCount, rule_map: InsertionMap) -> Dig
     return dict(new_count)
 
 
-def get_monogram_count(digram_count: DigramCount, first_char: str, last_char: str) -> Dict[str, int]:
+def get_monogram_count(
+    digram_count: DigramCount, first_char: str, last_char: str
+) -> Dict[str, int]:
     double_count = defaultdict(int)
     # Double count everything
     for digram, count in digram_count.items():

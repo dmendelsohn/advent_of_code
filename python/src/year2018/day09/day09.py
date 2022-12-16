@@ -1,21 +1,21 @@
 from collections import namedtuple
 
 NUM_PLAYERS = 459
-HI_MARBLE = 72103*100
+HI_MARBLE = 72103 * 100
 
 # Returns index of "current marble" after move
 # Modify marbles in place (and scores in place as well, if needed)
 def do_turn_list(marbles, index, player, next_marble, scores):
     if next_marble % 23 == 0:
         # Remove marble 7 indices lower and update scores
-        index = (index-7)%len(marbles)
+        index = (index - 7) % len(marbles)
         removed_marble = marbles[index]
         del marbles[index]
-        scores[player] += (next_marble + removed_marble)
+        scores[player] += next_marble + removed_marble
         return index
     else:
         # Place marble
-        index = (index+2)%len(marbles)
+        index = (index + 2) % len(marbles)
         marbles.insert(index, next_marble)
         return index
 
@@ -43,6 +43,7 @@ def remove_node(node):
     node.next.prev = node.prev
     return node.value
 
+
 def do_turn(current_node, player, next_marble, scores):
     # current_node is a node in a LL
     # player, next_marble are ints
@@ -54,7 +55,7 @@ def do_turn(current_node, player, next_marble, scores):
             current_node = current_node.prev
         next_current_node = current_node.next
         removed_marble = remove_node(current_node)
-        scores[player] += (next_marble + removed_marble)
+        scores[player] += next_marble + removed_marble
         return next_current_node
     else:
         # Place marble
@@ -63,24 +64,23 @@ def do_turn(current_node, player, next_marble, scores):
 
 
 def answer(f, hi_marble):
-    #marbles = [0]
-    #index = 0
+    # marbles = [0]
+    # index = 0
     current_node = Node(0)
     current_node.next = current_node
     current_node.prev = current_node
     player = 0
-    scores = [0]*NUM_PLAYERS
-    for next_marble in range(1, hi_marble+1):
+    scores = [0] * NUM_PLAYERS
+    for next_marble in range(1, hi_marble + 1):
         if next_marble % 100000 == 0:
-            print(next_marble/100000)
+            print(next_marble / 100000)
         current_node = do_turn(current_node, player, next_marble, scores)
-        player = (player+1)%NUM_PLAYERS
+        player = (player + 1) % NUM_PLAYERS
     return max(scores)
 
 
 if __name__ == "__main__":
-    f = open('input.txt', 'rt')
+    f = open("input.txt", "rt")
     print("Part 1: {}".format(answer(f, 72103)))
     f.seek(0)
-    print("Part 2: {}".format(answer(f, 72103*100)))
-
+    print("Part 2: {}".format(answer(f, 72103 * 100)))

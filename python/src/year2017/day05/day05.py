@@ -1,5 +1,6 @@
 def parse_input(f):
-    return [int(line) for line in f.read().strip().split('\n')]
+    return [int(line) for line in f.read().strip().split("\n")]
+
 
 def step(nums, pos, part_2):
     if pos < 0 or pos >= len(nums):
@@ -11,6 +12,7 @@ def step(nums, pos, part_2):
         nums[pos] += 1
     return next_pos
 
+
 def get_answer(f, part_2=False):
     nums = parse_input(f)
     steps, pos = 0, 0
@@ -19,9 +21,9 @@ def get_answer(f, part_2=False):
         steps += 1
     return steps
 
+
 if __name__ == "__main__":
-    f = open('input.txt', 'rt')
+    f = open("input.txt", "rt")
     print("Part 1: %d" % (get_answer(f, False),))
     f.seek(0)
     print("Part 2: %d" % (get_answer(f, True),))
-
