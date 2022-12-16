@@ -59,9 +59,9 @@ def get_dest_state() -> State:
     return State(hallway, a_room, b_room, c_room, d_room)
 
 
-def get_pushed_room(room: Room, home_char: str) -> Optional[Tuple[Room, int]]:
+def get_pushed_room(_room: Room, home_char: str) -> Optional[Tuple[Room, int]]:
     """Get the resulting room and dist of entering from the hallway (or None if impossible)"""
-    room = list(room)
+    room = list(_room)
     for i in range(3, -1, -1):
         if not room[i]:  # Found the lowest open spot
             room[i] = home_char
@@ -71,14 +71,15 @@ def get_pushed_room(room: Room, home_char: str) -> Optional[Tuple[Room, int]]:
     return None  # Room is full of home char already
 
 
-def get_popped_room(room: Room) -> Tuple[Room, str, int]:
+def get_popped_room(_room: Room) -> Tuple[Room, str, int]:
     """Pop top element out of room, return resulting room, popped char, and dist of exit"""
-    room = list(room)
+    room = list(_room)
     for i in range(4):
         if room[i]:  # Found the spot to pop
             popped_char = room[i]
             room[i] = ""
             return tuple(room), popped_char, i + 1
+    raise RuntimeError("Could not get popped room")
 
 
 def dist_to_reach_room(state: State, room_char: str, from_idx: int) -> Optional[int]:
@@ -180,7 +181,7 @@ def find_min_cost(start: State) -> Optional[int]:
     min_cost_per_state: Dict[State, int] = {start: 0}
     visited_states: Set[State] = set()
 
-    queue = PriorityQueue()
+    queue: PriorityQueue = PriorityQueue()
     queue.put((min_cost_per_state[start], start))
 
     # Loop until we find the terminal state

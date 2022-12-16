@@ -27,7 +27,7 @@ FRAMES = [
 def run_step(w: int, z: int, frame: Frame) -> int:
     z_mod = z % 26
     if frame.a <= 0:
-        z = (int(z / 26),)
+        z = z // 26
     if w != (frame.a + z_mod):
         z = z * 26 + (w + frame.b)
     return z
