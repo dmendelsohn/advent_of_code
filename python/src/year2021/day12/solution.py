@@ -1,12 +1,12 @@
+import pathlib
 from collections import Counter, defaultdict
-from pathlib import Path
-from typing import Dict, List, Set
+from typing import List, TypeAlias
 
-INPUT_PATH = Path(__file__).parent / "input.txt"
-TEST_INPUT_PATH = Path(__file__).parent / "test_input.txt"
+INPUT_PATH = pathlib.Path(__file__).parent / "input.txt"
+TEST_INPUT_PATH = pathlib.Path(__file__).parent / "test_input.txt"
 
-Graph = Dict[str, Set[str]]
-Path = List[str]
+Graph: TypeAlias = dict[str, set[str]]
+Path: TypeAlias = list[str]
 
 
 def read_input(use_test_input: bool = False) -> str:
