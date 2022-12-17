@@ -1,4 +1,11 @@
 [flake8]
 extend-ignore = E203
-exclude = venv,src/year2015,src/year2016,src/year2017,src/year2018
+# Note that pre-commit passes in each file explicitly, so exclude is ignored
+# Therefore, we have to specify this exclusion list in .pre-commit-config.yaml as well
+exclude =
+  venv
+  src/year2015
+  src/year2016
+  src/year2017
+  src/year2018
 max-line-length = 100

@@ -1,17 +1,36 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
-    hooks:
-    -   id: trailing-whitespace
-    -   id: end-of-file-fixer
-    -   id: check-yaml
-    -   id: check-added-large-files
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+    - id: check-yaml
+    - id: check-added-large-files
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
+- repo: https://github.com/PyCQA/flake8
+  rev: 6.0.0
+  hooks:
+    - id: flake8
+      args:
+        - "--config=python/.flake8"
+      # pre-commit passes explicit file paths to hooks
+      # Therefore, the --exclude option of flake8 will not be respected
+      # As a workaround, we specify excluded directories here and in the `.flake8` config file
+      exclude: |
+        (?x)^(
+        python/src/year2015/
+        |python/src/year2016/
+        |python/src/year2017/
+        |python/src/year2018/
+        )
 - repo: https://github.com/pycqa/isort
   rev: v5.11.3
   hooks:
-      - id: isort
-        name: isort (python)
+    - id: isort
+- repo: https://github.com/psf/black
+  rev: 22.12.0
+  hooks:
+    - id: black
 default_language_version:
     python: python3.10
