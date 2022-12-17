@@ -3,16 +3,17 @@ from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Tuple
 
 import numpy as np
+from numpy.typing import NDArray
 from numpy.linalg import matrix_power
 
 INPUT_PATH = Path(__file__).parent / "input.txt"
 TEST_INPUT_PATH = Path(__file__).parent / "test_input.txt"
 
 
-ReadingSet = np.array  # Nx3 2D array
-Rotation = np.array  # 3x3 2D array
-Translation = np.array  # 1x3 2D array
-Vector = np.array  # Length 3 1D array
+ReadingSet = NDArray  # Nx3 2D array
+Rotation = NDArray  # 3x3 2D array
+Translation = NDArray  # 1x3 2D array
+Vector = NDArray  # Length 3 1D array
 
 
 @lru_cache()
@@ -145,15 +146,19 @@ def read_input(use_test_input: bool = False) -> str:
 def parse_input(use_test_input: bool = False) -> Dict[int, ReadingSet]:
     """Return mapping from scanner number to ReadingSet"""
     raw_input = read_input(use_test_input)
-    scanner_to_reading_set = dict()
-    current_scanner = None
-    current_reading_set = []
+    scanner_to_reading_set: dict[int, ReadingSet] = dict()
+    current_scanner: int | None = None
+    current_reading_set: list[tuple[int, int, int]] = []
     # Could do regexes here, but meh
     for line in raw_input.split("\n"):
         line = line.strip()
         if not line:
             # "Commit" current scanner readings
             if current_reading_set:
+                if current_scanner is None:
+                    raise RuntimeError(
+                        "current scanner should not be None when current_reading_set is non-empty"
+                    )
                 scanner_to_reading_set[current_scanner] = np.array(current_reading_set)
                 current_scanner = None
                 current_reading_set = []

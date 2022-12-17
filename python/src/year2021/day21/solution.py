@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Dict, NamedTuple, Tuple
+from typing import Any, Dict, NamedTuple, Tuple
 
 INPUT_PATH = Path(__file__).parent / "input.txt"
 TEST_INPUT_PATH = Path(__file__).parent / "test_input.txt"
@@ -81,12 +81,16 @@ class GameResult(NamedTuple):
     on_player_wins: int
     off_player_wins: int
 
-    def __add__(self, other: "GameResult") -> "GameResult":
+    def __add__(self, other: Any) -> "GameResult":
+        if not isinstance(other, GameResult):
+            raise ValueError(f"Cannot add {other} to a GameResult")
         return GameResult(
             self.on_player_wins + other.on_player_wins, self.off_player_wins + other.off_player_wins
         )
 
-    def __mul__(self, other: int) -> "GameResult":
+    def __mul__(self, other: Any) -> "GameResult":
+        if not isinstance(other, int):
+            raise ValueError(f"Cannot multiple GameResult by non-integer {other}")
         return GameResult(other * self.on_player_wins, other * self.off_player_wins)
 
     @property
@@ -130,7 +134,7 @@ def part_2(use_test_input: bool = False) -> str:
     game_state = GameState(
         PlayerState(pos=p1_pos, points_to_win=target), PlayerState(pos=p2_pos, points_to_win=target)
     )
-    memo = dict()
+    memo: Dict[GameState, GameResult] = dict()
     game_result = get_game_result(game_state, memo)
     print(f"Game result: {game_result}")
     return f"{max((game_result.on_player_wins, game_result.off_player_wins))}"

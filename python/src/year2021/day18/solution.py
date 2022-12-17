@@ -15,7 +15,7 @@ def read_input(use_test_input: bool = False) -> str:
 
 
 def parse_expression(string: str) -> Expression:
-    expression = []
+    expression: List[Token] = []
     for char in string:
         if char in ",[]":
             expression.append(char)
@@ -45,7 +45,7 @@ def explode(expr: Expression, i: int) -> Expression:
     j = len(left_expr) - 1
     while j >= 0:
         if isinstance(left_expr[j], int):
-            left_expr[j] += left_num
+            left_expr[j] += left_num  # type: ignore
             break
         j -= 1
 
@@ -53,7 +53,7 @@ def explode(expr: Expression, i: int) -> Expression:
     j = 0
     while j < len(right_expr):
         if isinstance(right_expr[j], int):
-            right_expr[j] += right_num
+            right_expr[j] += right_num  # type: ignore
             break
         j += 1
 
@@ -65,8 +65,8 @@ def split(expr: Expression, i: int) -> Expression:
     num = expr[i]
     left_expr = expr[:i]
     right_expr = expr[i + 1 :]
-    insert_expr = ["[", num // 2, ",", (num + 1) // 2, "]"]
-    return left_expr + insert_expr + right_expr
+    insert_expr = ["[", num // 2, ",", (num + 1) // 2, "]"]  # type: ignore
+    return left_expr + insert_expr + right_expr  # type: ignore
 
 
 def reduce(expr: Expression) -> Expression:

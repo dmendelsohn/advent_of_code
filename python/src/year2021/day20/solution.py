@@ -100,7 +100,7 @@ def parse_input(use_test_input: bool = False) -> Tuple[Board, Pattern]:
     lines = raw_input.split("\n")
     pattern = [char == "#" for char in lines.pop(0).strip()]
     y = 0
-    points = set()
+    points: Set[Point] = set()
     for line in lines:
         line = line.strip()
         if not line:

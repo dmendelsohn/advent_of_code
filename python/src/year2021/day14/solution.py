@@ -37,7 +37,8 @@ def get_score(seq: List[str]) -> int:
 
 
 def part_1(use_test_input: bool = False) -> str:
-    seq, rule_map = parse_input(use_test_input)
+    seq_str, rule_map = parse_input(use_test_input)
+    seq = list(seq_str)
     for i in range(10):
         seq = apply_rules(seq, rule_map)
     score = get_score(seq)
@@ -48,14 +49,14 @@ DigramCount = Dict[Tuple[str, str], int]
 
 
 def get_digram_count(seq: str) -> DigramCount:
-    digram_count = defaultdict(int)
+    digram_count: defaultdict[tuple[str, str], int] = defaultdict(int)
     for i in range(len(seq) - 1):
         digram_count[(seq[i], seq[i + 1])] += 1
     return dict(digram_count)
 
 
 def apply_rules_digram(digram_count: DigramCount, rule_map: InsertionMap) -> DigramCount:
-    new_count = defaultdict(int)
+    new_count: defaultdict[tuple[str, str], int] = defaultdict(int)
     for digram, count in digram_count.items():
         insert_char = rule_map.get(digram)
         if insert_char:
@@ -69,7 +70,7 @@ def apply_rules_digram(digram_count: DigramCount, rule_map: InsertionMap) -> Dig
 def get_monogram_count(
     digram_count: DigramCount, first_char: str, last_char: str
 ) -> Dict[str, int]:
-    double_count = defaultdict(int)
+    double_count: defaultdict[str, int] = defaultdict(int)
     # Double count everything
     for digram, count in digram_count.items():
         double_count[digram[0]] += count

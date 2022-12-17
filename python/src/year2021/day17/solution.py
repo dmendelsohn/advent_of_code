@@ -1,6 +1,6 @@
 import re
 from pathlib import Path
-from typing import NamedTuple, Set
+from typing import Any, NamedTuple, Set
 
 INPUT_PATH = Path(__file__).parent / "input.txt"
 TEST_INPUT_PATH = Path(__file__).parent / "test_input.txt"
@@ -17,7 +17,9 @@ class Vector(NamedTuple):
     x: int
     y: int
 
-    def __add__(self, other: "Vector") -> "Vector":
+    def __add__(self, other: Any) -> "Vector":
+        if not isinstance(other, Vector):
+            raise ValueError(f"other must be a Vector, not {type(other)}")
         return Vector(self.x + other.x, self.y + other.y)
 
 
@@ -29,7 +31,7 @@ def read_input(use_test_input: bool = False) -> str:
 def parse_input(use_test_input: bool = False) -> TargetBox:
     raw_input = read_input(use_test_input)
     pattern = r"^target area: x=(-?[0-9]+)\.\.(-?[0-9]+), y=(-?[0-9]+)\.\.(-?[0-9]+)$"
-    groups = re.match(pattern, raw_input).groups()
+    groups = re.match(pattern, raw_input).groups()  # type: ignore
     return TargetBox(*(int(val) for val in groups))
 
 
