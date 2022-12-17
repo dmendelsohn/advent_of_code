@@ -62,7 +62,7 @@ def parse_input() -> Set[Segment]:
 
 def part_1() -> str:
     segments = parse_input()
-    point_counts = defaultdict(int)
+    point_counts: defaultdict[Point, int] = defaultdict(int)
     for segment in segments:
         for point in segment_points(segment, include_diagonals=False):
             point_counts[point] += 1
@@ -74,7 +74,7 @@ def part_1() -> str:
 
 def part_2() -> str:
     segments = parse_input()
-    point_counts = defaultdict(int)
+    point_counts: defaultdict[Point, int] = defaultdict(int)
     for segment in segments:
         for point in segment_points(segment, include_diagonals=True):
             point_counts[point] += 1

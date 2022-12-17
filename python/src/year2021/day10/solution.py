@@ -81,4 +81,4 @@ def part_2(use_test_input: bool = False) -> str:
     if len(scores) % 2 == 0:
         raise ValueError("Even number of input lines is not allowed")
     median = sorted(scores)[len(scores) // 2]
-    return median
+    return str(median)

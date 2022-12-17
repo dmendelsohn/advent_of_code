@@ -68,7 +68,7 @@ def get_basin(
 
 def get_all_basins(grid: List[List[int]]) -> Set[FrozenSet[Tuple[int, int]]]:
     basins = set()
-    visited_points = set()
+    visited_points: set[tuple[int, int]] = set()
     for row in range(len(grid)):
         for col in range(len(grid[0])):
             basin = get_basin(grid, row, col, visited_points)

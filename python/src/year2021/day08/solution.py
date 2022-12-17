@@ -62,7 +62,7 @@ def deduce_digit(
 
 
 def deduce_digits(digit_signals: Set[DigitSignal]) -> Dict[str, DigitSignal]:
-    known_digits = dict()
+    known_digits: dict[str, DigitSignal] = dict()
     remaining_signals = digit_signals.copy()
     while remaining_signals:
         digit, signal = deduce_digit(known_digits, remaining_signals)
