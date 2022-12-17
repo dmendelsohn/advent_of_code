@@ -64,5 +64,3 @@ Line 30, assuming we don't exit, skips to Line 32 which always jumps to Line 8
 Line 8 (R2=R1) sets R2 = 10332277
 Line 9 sets R1 = 6663054
 Line 10 (R4 = R2 & 255) sets R4 = 117
-
-

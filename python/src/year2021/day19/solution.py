@@ -3,8 +3,8 @@ from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Tuple
 
 import numpy as np
-from numpy.typing import NDArray
 from numpy.linalg import matrix_power
+from numpy.typing import NDArray
 
 INPUT_PATH = Path(__file__).parent / "input.txt"
 TEST_INPUT_PATH = Path(__file__).parent / "test_input.txt"

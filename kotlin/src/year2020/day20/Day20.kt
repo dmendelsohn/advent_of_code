@@ -226,9 +226,9 @@ private fun BooleanGrid.isActive(point: Point): Boolean {
 /** Return set of points relative to top-left corner of rectangle */
 private fun getMonsterPattern(): Set<Point> {
     val text = """
-    |                  # 
+    |                  #
     |#    ##    ##    ###
-    | #  #  #  #  #  #   
+    | #  #  #  #  #  #
     """.trimMargin()
     return text.split("\n").mapIndexed { row, line ->
         line.mapIndexedNotNull { col, c -> if (c == '#') Pair(row, col) else null }

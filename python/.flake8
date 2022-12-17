@@ -2,4 +2,3 @@
 extend-ignore = E203
 exclude = venv,src/year2015,src/year2016,src/year2017,src/year2018
 max-line-length = 100
-
