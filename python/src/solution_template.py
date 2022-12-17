@@ -16,8 +16,8 @@ def parse_input(use_test_input: bool = False) -> List[str]:
 
 
 def part_1(use_test_input: bool = False) -> str:
-    pass
+    return "Not implemented"
 
 
 def part_2(use_test_input: bool = False) -> str:
-    pass
+    return "Not implemented"

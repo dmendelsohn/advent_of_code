@@ -3,6 +3,8 @@ line-length = 100
 
 [tool.mypy]
 explicit_package_bases = true
+# Note that pre-commit passes in each file explicitly, so exclude is ignored
+# Therefore, we have to specify this exclusion list in .pre-commit-config.yaml as well
 exclude = [
     "^src/year2015/",
     "^src/year2016/",

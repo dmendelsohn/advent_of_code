@@ -32,5 +32,22 @@ repos:
   rev: 22.12.0
   hooks:
     - id: black
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: 'v0.991'
+  hooks:
+    - id: mypy
+      args:
+        - "--config-file=python/pyproject.toml"
+        - "--python-executable=python/venv/bin/python"
+      # pre-commit passes explicit file paths to hooks
+      # Therefore, the --exclude option of mypy will not be respected
+      # As a workaround, we specify excluded directories here pyproject.toml
+      exclude: |
+        (?x)^(
+        python/src/year2015/
+        |python/src/year2016/
+        |python/src/year2017/
+        |python/src/year2018/
+        )
 default_language_version:
     python: python3.10
