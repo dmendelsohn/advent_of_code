@@ -1,8 +1,8 @@
-pub fn part1(input: &str) -> String {
+fn part1(input: &str) -> String {
     String::from("Part 1 not yet implemented")
 }
 
-pub fn part2(input: &str) -> String {
+fn part2(input: &str) -> String {
     String::from("Part 2 not yet implemented")
 }
 

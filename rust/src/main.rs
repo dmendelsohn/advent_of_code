@@ -34,7 +34,6 @@ fn main() {
         .get_one::<u8>("day")
         .expect("Day must be an integer");
     let is_example = matches.get_flag("example");
-    dbg!(year, day, is_example);
 
     let input_path = format!(
         "../inputs/year{}/{}{:0>2}.txt",
