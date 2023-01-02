@@ -1,3 +1,5 @@
+extern crate core;
+
 use clap::{command, value_parser, Arg, ArgAction};
 use std::{fs, process};
 
@@ -57,6 +59,8 @@ fn main() {
         (2022, 1) => year2022::day01::run(&input[..]),
         (2022, 2) => year2022::day02::run(&input[..]),
         (2022, 3) => year2022::day03::run(&input[..]),
+        (2022, 4) => year2022::day04::run(&input[..]),
+        (2022, 5) => year2022::day05::run(&input[..]),
         _ => panic!("No solution defined for year={} day={}", year, day),
     }
 }
