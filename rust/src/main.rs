@@ -56,6 +56,7 @@ fn main() {
     match (year, day) {
         (2022, 1) => year2022::day01::run(&input[..]),
         (2022, 2) => year2022::day02::run(&input[..]),
+        (2022, 3) => year2022::day03::run(&input[..]),
         _ => panic!("No solution defined for year={} day={}", year, day),
     }
 }
