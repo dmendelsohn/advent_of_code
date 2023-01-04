@@ -85,7 +85,7 @@ fn part2(input: &str) -> String {
     // Build the output line by line
     let mut output: Vec<String> = vec![String::from("\n")];
     for line_idx in 0..num_lines {
-        let mut line = signal.get_line(line_idx * 40 + 1, 40);
+        let line = signal.get_line(line_idx * 40 + 1, 40);
         output.push(line);
     }
 
