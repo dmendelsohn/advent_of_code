@@ -124,7 +124,6 @@ fn run_commands(commands: Vec<Command>) -> Rc<Directory> {
 /// Finds the size of the root directory
 /// Also populates `result` with the sizes of all subdirectories (including the root)
 fn get_directory_size(root: Rc<Directory>, result: &mut Vec<usize>) -> usize {
-    // TODO: implement
     let contents = root
         .contents
         .take()
