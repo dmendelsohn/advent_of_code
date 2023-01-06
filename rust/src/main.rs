@@ -57,18 +57,19 @@ fn main() {
         year, day, is_example
     );
     match (year, day) {
-        (2022, 1) => year2022::day01::run(&input[..]),
-        (2022, 2) => year2022::day02::run(&input[..]),
-        (2022, 3) => year2022::day03::run(&input[..]),
-        (2022, 4) => year2022::day04::run(&input[..]),
-        (2022, 5) => year2022::day05::run(&input[..]),
-        (2022, 6) => year2022::day06::run(&input[..]),
-        (2022, 7) => year2022::day07::run(&input[..]),
-        (2022, 8) => year2022::day08::run(&input[..]),
-        (2022, 9) => year2022::day09::run(&input[..]),
+        (2022, 01) => year2022::day01::run(&input[..]),
+        (2022, 02) => year2022::day02::run(&input[..]),
+        (2022, 03) => year2022::day03::run(&input[..]),
+        (2022, 04) => year2022::day04::run(&input[..]),
+        (2022, 05) => year2022::day05::run(&input[..]),
+        (2022, 06) => year2022::day06::run(&input[..]),
+        (2022, 07) => year2022::day07::run(&input[..]),
+        (2022, 08) => year2022::day08::run(&input[..]),
+        (2022, 09) => year2022::day09::run(&input[..]),
         (2022, 10) => year2022::day10::run(&input[..]),
         (2022, 11) => year2022::day11::run(&input[..]),
         (2022, 12) => year2022::day12::run(&input[..]),
+        (2022, 13) => year2022::day13::run(&input[..]),
         _ => panic!("No solution defined for year={} day={}", year, day),
     }
 }
