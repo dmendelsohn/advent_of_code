@@ -70,6 +70,7 @@ fn main() {
         (2022, 11) => year2022::day11::run(&input[..]),
         (2022, 12) => year2022::day12::run(&input[..]),
         (2022, 13) => year2022::day13::run(&input[..]),
+        (2022, 14) => year2022::day14::run(&input[..]),
         _ => panic!("No solution defined for year={} day={}", year, day),
     }
 }
