@@ -1,5 +1,6 @@
 import argparse
 import importlib
+import time
 from pathlib import Path
 from typing import Callable, NamedTuple
 
@@ -33,14 +34,21 @@ def get_implementation(args: Args) -> tuple[Solution, Solution]:
     return getattr(solution_module, "part_1"), getattr(solution_module, "part_2")
 
 
+def run_solution(solution: Solution, input_text: str, label: str) -> None:
+    start_time = time.time()
+    result = solution(input_text)
+    duration = time.time() - start_time
+    print(f"{label}: {result} (in {duration:.3f}s)")
+
+
 def main():
     args = parse_args()
     input_text = get_input(args)
     part1, part2 = get_implementation(args)
 
     print(f"{'[EXAMPLE] 'if args.example else ''}Running {args.year} Day {args.day:02d}")
-    print(f"Part 1: {part1(input_text)}")
-    print(f"Part 2: {part2(input_text)}")
+    run_solution(part1, input_text, "Part 1")
+    run_solution(part2, input_text, "Part 2")
 
 
 if __name__ == "__main__":
