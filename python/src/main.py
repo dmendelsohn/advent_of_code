@@ -26,7 +26,7 @@ def get_input(args: Args) -> str:
     input_dir = Path(__file__).parent.parent.parent / "inputs" / f"year{args.year:04d}"
     filename = f"example{args.day:02d}.txt" if args.example else f"day{args.day:02d}.txt"
     path = input_dir / filename
-    return path.read_text().strip()
+    return path.read_text().rstrip("\n")
 
 
 def get_implementation(args: Args) -> tuple[Solution, Solution]:
