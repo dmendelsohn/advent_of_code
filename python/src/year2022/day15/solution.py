@@ -55,29 +55,6 @@ def merge_ranges(ranges: Iterable[Range]) -> list[Range]:
     return output
 
 
-def complement_ranges(ranges: list[Range], min_val: int, max_val: int) -> list[Range]:
-    """Given a sorted list of non-touching ranges, return the complement"""
-    if not ranges:
-        return [Range(min_val, max_val)]
-
-    complements = []
-    if ranges[0].low > min_val:
-        complements.append(Range(min_val, ranges[0].low - 1))
-
-    # Add a complement in each gap
-    for idx in range(len(ranges) - 1):
-        gap = Range(ranges[idx].high + 1, ranges[idx + 1].low - 1)
-
-        bounded_gap = Range(max(min_val, gap.low), min(max_val, gap.high))
-        if bounded_gap.low <= bounded_gap.high:
-            complements.append(bounded_gap)
-
-    if ranges[-1].high < max_val:
-        complements.append(Range(ranges[-1].high + 1, max_val))
-
-    return complements
-
-
 def get_xranges_within_beacon_dist(sensors: set[Sensor], y: int) -> list[Range]:
     """
     Return the list of x-ranges that cannot have they mystery beacon.
@@ -121,21 +98,102 @@ def part_1(puzzle_input: str) -> str | int:
     return total
 
 
+class Segment(NamedTuple):
+    """Represents a diagonal (slope = 1 or -1) segment"""
+
+    start: Point  # Leftmost (min x) point
+    length: int  # Length (start.x + length) is x-coord last point on the segment)
+    is_positive_slope: bool  # Indicates if slope is 1 or -1
+
+    def intersect(self, other: "Segment") -> Optional[Point]:
+        """
+        For segments of differing slopes, calculate their intersection point (if any)
+        We ignore non-integer intersection points
+        """
+        if self.is_positive_slope == other.is_positive_slope:
+            return None
+
+        # Find intersection of the two lines
+        # y = x + b and y = -x + c intersect at x = (c - b) / 2
+        positive = next(seg for seg in (self, other) if seg.is_positive_slope)
+        positive_y_intercept = positive.start.y - positive.start.x
+
+        negative = next(seg for seg in (self, other) if not seg.is_positive_slope)
+        negative_y_intercept = negative.start.y + negative.start.x
+
+        y_intercept_diff = negative_y_intercept - positive_y_intercept
+        if y_intercept_diff % 2 == 1:
+            return None
+
+        x_intersection = y_intercept_diff // 2
+
+        if (
+            0 <= x_intersection - positive.start.x <= positive.length
+            and 0 <= x_intersection - negative.start.x <= negative.length
+        ):
+            y_intersection = positive.start.y + (x_intersection - positive.start.x)
+            return Point(x_intersection, y_intersection)
+
+        return None
+
+
+def can_have_mystery_beacon(point: Point, sensors: set[Sensor], bound: int) -> bool:
+    if point.x < 0 or point.x > bound or point.y < 0 or point.y > bound:
+        return False
+
+    for sensor in sensors:
+        if sensor.location.distance_from(point) <= sensor.location.distance_from(
+            sensor.nearest_beacon
+        ):
+            return False
+    return True
+
+
+def tuning_frequency(point: Point) -> int:
+    return 4000000 * point.x + point.y
+
+
 def part_2(puzzle_input: str) -> str | int:
     # This part takes a minute to run, but I can't think of an asymptotically faster way to do it
     sensors = parse_input(puzzle_input)
     bound = 20 if len(sensors) == 14 else 4000000  # Different bounds for example and real cases
 
-    for y in range(bound + 1):
-        xranges = get_xranges_within_beacon_dist(sensors, y)
-        uncovered_ranges = complement_ranges(xranges, 0, bound)
-        if not uncovered_ranges:
-            # Completely covered y-coord, move on to the next one
-            continue
+    segments = []
+    for sensor in sensors:
+        center = sensor.location
+        radius = sensor.location.distance_from(sensor.nearest_beacon)
+        segments.append(
+            Segment(start=Point(center.x - radius, center.y), length=radius, is_positive_slope=True)
+        )
+        segments.append(
+            Segment(
+                start=Point(center.x - radius, center.y), length=radius, is_positive_slope=False
+            )
+        )
+        segments.append(
+            Segment(start=Point(center.x, center.y - radius), length=radius, is_positive_slope=True)
+        )
+        segments.append(
+            Segment(
+                start=Point(center.x, center.y + radius), length=radius, is_positive_slope=False
+            )
+        )
 
-        if len(uncovered_ranges) > 1 or uncovered_ranges[0].width > 1:
-            raise ValueError(f"Got multiple possible locations at {y=}. Ranges: {uncovered_ranges}")
+    intersections = set()
+    for i in range(len(segments)):
+        for j in range(i + 1, len(segments)):
+            intersection = segments[i].intersect(segments[j])
+            if intersection:
+                intersections.add(intersection)
 
-        return uncovered_ranges[0].low * 4000000 + y
+    uncovered_points = set()
+    for intersection in intersections:
+        for delta_x, delta_y in ((0, 1), (1, 0), (0, -1), (-1, 0)):
+            neighbor = Point(intersection.x + delta_x, intersection.y + delta_y)
+            if can_have_mystery_beacon(neighbor, sensors, bound):
+                uncovered_points.add(neighbor)
 
-    raise RuntimeError("Could not find distress beacon")
+    if len(uncovered_points) != 1:
+        raise RuntimeError(f"Did not get exactly one candidate point: {uncovered_points}")
+
+    return tuning_frequency(uncovered_points.pop())
