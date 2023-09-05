@@ -15,7 +15,7 @@ class Args(NamedTuple):
 
 def parse_args() -> Args:
     parser = argparse.ArgumentParser("Advent of Code")
-    parser.add_argument("-y", "--year", dest="year", type=int, default=2019)
+    parser.add_argument("-y", "--year", dest="year", type=int)
     parser.add_argument("-d", "--day", dest="day", type=int)
     parser.add_argument("-e", "--example", dest="example", action="store_true")
     args = parser.parse_args()
